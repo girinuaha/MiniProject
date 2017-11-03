@@ -103,6 +103,26 @@
                     		<span class="fa fa-users"></span> Customer  <span class="fa-angle-right fa right-arrow text-right"></span>
                     	</a>
                     </li>
+                    <li class="active ripple">
+                    	<a class="nav-header" href="employee">
+                    		<span class="fa fa-user"></span> Employee  <span class="fa-angle-right fa right-arrow text-right"></span>
+                    	</a>
+                    </li>
+                    <li class="active ripple">
+                    	<a class="nav-header" href="shelf">
+                    		<span class="fa fa-archive"></span> Shelf  <span class="fa-angle-right fa right-arrow text-right"></span>
+                    	</a>
+                    </li>
+                    <li class="active ripple">
+                    	<a class="nav-header" href="publisher">
+                    		<span class="fa fa-newspaper-o"></span> Publisher  <span class="fa-angle-right fa right-arrow text-right"></span>
+                    	</a>
+                    </li>
+                    <li class="active ripple">
+                    	<a class="nav-header" href="book_stock">
+                    		<span class="fa fa-balance-scale"></span> Book Stock  <span class="fa-angle-right fa right-arrow text-right"></span>
+                    	</a>
+                    </li>
                 </ul>
             </div>
         </div>
