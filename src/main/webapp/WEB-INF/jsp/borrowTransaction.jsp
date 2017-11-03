@@ -157,10 +157,13 @@
 								</div>
 							  	<div class="form-group col-md-6">
 							    	<label>Employee</label>
-							    	<c:forEach var="employees" items="${employees }">
-							    		<input type="hidden" class="form-control" name="employee.id" value="${employees.id }">
-							    		<input type="text" class="form-control" value="${employees.name }">
-							    	</c:forEach>
+							    	<select class="form-control employee" name="employee.id">
+							    		<c:forEach var="employee" items="${employees }">
+							    			<option value="${employee.id }">${employee.name }</option>
+								    		<%-- <input type="hidden" class="form-control" name="employee.id" value="${employees.id }">
+								    		<input type="text" class="form-control" value="${employees.name }"> --%>
+								    	</c:forEach>
+							    	</select>
 							  	</div>
 							</div>
 							<button type="submit" class="btn btn-primary">Save</button><br><br><br><br>
@@ -195,11 +198,17 @@
         $('#borrowDate').bootstrapMaterialDatePicker({
         	weekStart : 0, 
 	       	time: false,
+	       	maxDate : new Date(),
 	       	format : 'DD/MM/YYYY',
         });
         
         $(".customer").select2({
             placeholder: "Select a customer",
+            allowClear: true
+        });
+        
+        $(".employee").select2({
+            placeholder: "Select a employee",
             allowClear: true
         });
     </script>
