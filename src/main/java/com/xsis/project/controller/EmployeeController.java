@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.xsis.project.service.ReturnTransactionService;
 import com.xsis.project.model.Employee;
+import com.xsis.project.service.BorrowTransactionService;
 import com.xsis.project.service.EmployeeService;
 
 @Controller
@@ -23,10 +25,10 @@ public class EmployeeController {
 
 	@Autowired
 	EmployeeService employeeService;
-	/*@Autowired
+	@Autowired
 	BorrowTransactionService borrowTransactionService;
 	@Autowired
-	ReturnTransactionService returnTransactionService;*/
+	ReturnTransactionService returnTransactionService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(Model model) {
