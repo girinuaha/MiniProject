@@ -101,12 +101,25 @@
 	                        <li><a href="handsontable.html">Borrow Book</a></li>
                       	</ul>
                     </li>
-                    <li class="ripple"><a class="tree-toggle nav-header"><span class="fa fa-table"></span> Tables  <span class="fa-angle-right fa right-arrow text-right"></span> </a>
-                      <ul class="nav nav-list tree">
-                        <li><a href="datatables.html">Data Tables</a></li>
-                        <li><a href="handsontable.html">handsontable</a></li>
-                        <li><a href="tablestatic.html">Static</a></li>
-                      </ul>
+                    <li class="ripple animated fadeInLeft">
+                    	<a class="nav-header" href="customer">
+                    		<span class="fa fa-users"></span> Customer  <span class="fa-angle-right fa right-arrow text-right"></span>
+                    	</a>
+                    </li>
+                    <li class="ripple animated fadeInRight">
+                    	<a class="nav-header" href="employee">
+                    		<span class="fa fa-user"></span> Employee  <span class="fa-angle-right fa right-arrow text-right"></span>
+                    	</a>
+                    </li>
+                    <li class="ripple animated fadeInLeft">
+                    	<a class="nav-header" href="shelf">
+                    		<span class="fa fa-archive"></span> Shelf  <span class="fa-angle-right fa right-arrow text-right"></span>
+                    	</a>
+                    </li>
+                    <li class="ripple animated fadeInRight">
+                    	<a class="nav-header" href="publisher">
+                    		<span class="fa fa-newspaper-o"></span> Publisher  <span class="fa-angle-right fa right-arrow text-right"></span>
+                    	</a>
                     </li>
                   </ul>
                 </div>

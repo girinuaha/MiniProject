@@ -19,8 +19,8 @@ import com.xsis.project.service.RentHistoryService;
 @RequestMapping("/returnTransaction")
 public class ReturnTransactionController {
 
-	@Autowired
-	ReturnTransactionService returnTransactionService;
+	/*@Autowired
+	ReturnTransactionService returnTransactionService;*/
 	@Autowired
 	EmployeeService employeeService;
 	@Autowired
@@ -29,8 +29,8 @@ public class ReturnTransactionController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(Model model) {
 
-		List<ReturnTransaction> returnTransactions = returnTransactionService.getAllReturnTransactions();
-		model.addAttribute("returnTransactions", returnTransactions);
+		/*List<ReturnTransaction> returnTransactions = returnTransactionService.getAllReturnTransactions();
+		model.addAttribute("returnTransactions", returnTransactions);*/
 		
 		List<Employee> employees = employeeService.getAllEmployees();
 		model.addAttribute("employees", employees);
@@ -43,7 +43,7 @@ public class ReturnTransactionController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String savingData(@ModelAttribute ReturnTransaction returnTransaction) {
-		returnTransactionService.save(returnTransaction);
+		//returnTransactionService.save(returnTransaction);
 		return "redirect:/rentHistory";
 	}
 

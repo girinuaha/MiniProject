@@ -1,5 +1,7 @@
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\service\RentHistoryService.java
+C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\CustomerDao.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\model\Publisher.java
+C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\CustomerDaoImpl.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\BookStockDao.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\PublisherDao.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\model\BookTransaction.java
@@ -8,6 +10,7 @@ C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\model\ReturnTr
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\controller\ShelfController.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\service\ShelfService.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\RentHistoryDao.java
+C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\controller\CustomerController.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\model\Customer.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\RentHistoryDaoImpl.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\ShelfDao.java
@@ -26,3 +29,4 @@ C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\model\Employee
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\service\BookService.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\model\BookStock.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\controller\PublisherController.java
+C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\service\CustomerService.java

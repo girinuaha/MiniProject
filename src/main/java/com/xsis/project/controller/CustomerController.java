@@ -14,50 +14,62 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.xsis.project.model.Employee;
-import com.xsis.project.service.EmployeeService;
+import com.xsis.project.model.Customer;
+import com.xsis.project.service.CustomerService;
 
 @Controller
-@RequestMapping("/employee")
-public class EmployeeController {
-
+@RequestMapping("/customer")
+public class CustomerController {
+	// REST API -> @ResponseBody
 	@Autowired
-	EmployeeService employeeService;
-	/*@Autowired
-	BorrowTransactionService borrowTransactionService;
-	@Autowired
-	ReturnTransactionService returnTransactionService;*/
+	CustomerService customerService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(Model model) {
-		List<Employee> employees = employeeService.getAllEmployees();
-		model.addAttribute("employees", employees);
-		
-		return "employee";
+
+		List<Customer> customers = customerService.getAllCustomers();
+		model.addAttribute("customers", customers);
+		return "customer";
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(@ModelAttribute Employee employee) {
-		employeeService.save(employee);
-		return "redirect:/employee";
+	public String savingData(@ModelAttribute Customer customer) {
+		customerService.save(customer);
+		return "redirect:/customer";
 	}
+
+	/*
+	 * @RequestMapping(value = "/save2", method = RequestMethod.POST)
+	 * 
+	 * @ResponseStatus(HttpStatus.CREATED) public void savingData2(@RequestBody
+	 * Customer customer) { customerService.save(customer); }
+	 */
 
 	@RequestMapping(value = "/edit/{id}")
 	@ResponseBody
-	public Employee getEmployeeById(@PathVariable int id) {
-		Employee result = employeeService.getEmployeeById(id);
+	public Customer getCustomerById(@PathVariable int id) {
+		Customer result = customerService.getCustomerById(id);
 		return result;
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)
 	@ResponseStatus(HttpStatus.OK)
-	public void update(@RequestBody Employee employee) {
-		employeeService.update(employee);
+	public void updateCustomer(@RequestBody Customer customer) {
+		customerService.update(customer);
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.OK)
 	public void delete(@PathVariable int id) {
-		employeeService.delete(id);
+		customerService.delete(id);
 	}
+
+	@RequestMapping(value = "/allemp", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Customer> getAllCustomers() {
+		List<Customer> customers = customerService.getAllCustomers();
+
+		return customers;
+	}
+
 }
