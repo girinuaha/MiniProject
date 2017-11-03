@@ -19,68 +19,65 @@
   <!-- end: Css -->
 
   <link rel="shortcut icon" href="assets/asset/img/logomi.png">
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-      <![endif]-->
 </head>
 
 <body id="mimin" class="dashboard">
-      <!-- start: Header -->
-        <nav class="navbar navbar-default header navbar-fixed-top">
-          <div class="col-md-12 nav-wrapper">
-            <div class="navbar-header" style="width:100%;">
-              <div class="opener-left-menu is-open">
-                <span class="top"></span>
-                <span class="middle"></span>
-                <span class="bottom"></span>
-              </div>
-                <a href="index.html" class="navbar-brand"> 
-                 <b>MASA</b>
-                </a>
+	<!-- start: Header -->
+	<nav class="navbar navbar-default header navbar-fixed-top">
+		<div class="col-md-12 nav-wrapper">
+			<div class="navbar-header" style="width: 100%;">
+				<div class="opener-left-menu is-open">
+					<span class="top"></span> <span class="middle"></span> <span
+						class="bottom"></span>
+				</div>
+				<a href="index.html" class="navbar-brand"> <b>MASA</b>
+				</a>
 
-              <ul class="nav navbar-nav search-nav">
-                <li>
-                   <div class="search">
-                    <span class="fa fa-search icon-search" style="font-size:23px;"></span>
-                    <div class="form-group form-animate-text">
-                      <input type="text" class="form-text" required>
-                      <span class="bar"></span>
-                      <label class="label-search">Type anywhere to <b>Search</b> </label>
-                    </div>
-                  </div>
-                </li>
-              </ul>
+				<ul class="nav navbar-nav search-nav">
+					<li>
+						<div class="search">
+							<span class="fa fa-search icon-search" style="font-size: 23px;"></span>
+							<div class="form-group form-animate-text">
+								<input type="text" class="form-text" required> <span
+									class="bar"></span> <label class="label-search">Type
+									anywhere to <b>Search</b>
+								</label>
+							</div>
+						</div>
+					</li>
+				</ul>
 
-              <ul class="nav navbar-nav navbar-right user-nav" style="margin-right: 5px;">
-                <li class="user-name"><span>Akihiko Avaron</span></li>
-                  <li class="dropdown avatar-dropdown">
-                   <img src="assets/asset/img/avatar.jpg" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"/>
-                   <ul class="dropdown-menu user-dropdown">
-                     <li><a href="#"><span class="fa fa-user"></span> My Profile</a></li>
-                     <li><a href="#"><span class="fa fa-calendar"></span> My Calendar</a></li>
-                     <li role="separator" class="divider"></li>
-                     <li class="more">
-                      <ul style="float: right;">
-                        <li><a href=""><span class="fa fa-power-off "></span></a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      <!-- end: Header -->
-
-      <div class="container-fluid mimin-wrapper">
-  
-          <!-- start:Left Menu -->
-            <div id="left-menu">
-              <div class="sub-left-menu scroll">
+				<ul class="nav navbar-nav navbar-right user-nav"
+					style="margin-right: 5px;">
+					<li class="user-name"><span>Akihiko Avaron</span></li>
+					<li class="dropdown avatar-dropdown"><img
+						src="assets/asset/img/avatar.jpg" class="img-circle avatar"
+						alt="user name" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="true" />
+						<ul class="dropdown-menu user-dropdown">
+							<li><a href="#"><span class="fa fa-user"></span> My
+									Profile</a></li>
+							<li><a href="#"><span class="fa fa-calendar"></span> My
+									Calendar</a></li>
+							<li role="separator" class="divider"></li>
+							<li class="more">
+								<ul style="float: right;">
+									<li><a href=""><span class="fa fa-power-off "></span></a></li>
+								</ul>
+							</li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- end: Header -->
+	
+	<div class="container-fluid mimin-wrapper">
+		<!-- start:Left Menu -->
+		<div id="left-menu">
+			<div class="sub-left-menu scroll">
                 <ul class="nav nav-list">
-                    <li><div class="left-bg"></div></li>
+                	<li><div class="left-bg"></div></li>
                     <li class="time">
                       <h1 class="animated fadeInLeft">21:00</h1>
                       <p class="animated fadeInRight">Sat,October 1st 2029</p>
@@ -101,33 +98,29 @@
 	                        <li><a href="handsontable.html">Borrow Book</a></li>
                       	</ul>
                     </li>
-                    <li class="ripple"><a class="tree-toggle nav-header"><span class="fa fa-table"></span> Tables  <span class="fa-angle-right fa right-arrow text-right"></span> </a>
-                      <ul class="nav nav-list tree">
-                        <li><a href="datatables.html">Data Tables</a></li>
-                        <li><a href="handsontable.html">handsontable</a></li>
-                        <li><a href="tablestatic.html">Static</a></li>
-                      </ul>
+                    <li class="active ripple">
+                    	<a class="nav-header" href="customer">
+                    		<span class="fa fa-users"></span> Customer  <span class="fa-angle-right fa right-arrow text-right"></span>
+                    	</a>
                     </li>
-                  </ul>
-                </div>
+                </ul>
             </div>
-          <!-- end: Left Menu -->
-
-
-            <!-- start: Content -->
-            <div id="content">
-               <div class="panel box-shadow-none content-header">
-                  <div class="panel-body">
-                    <div class="col-md-12">
-                        <h3 class="animated fadeInLeft">Book</h3>
-                        <p class="animated fadeInDown">
-                         	Book <span class="fa-angle-right fa"></span> List
-                        </p>
-                    </div>
-                  </div>
-              </div>
-              <div class="col-md-12 top-20 padding-0">
-                <div class="col-md-12">
+        </div>
+        <!-- end: Left Menu -->
+		<!-- start: Content -->
+		<div id="content">
+			<div class="panel box-shadow-none content-header">
+				<div class="panel-body">
+					<div class="col-md-12">
+						<h3 class="animated fadeInLeft">Book</h3>
+						<p class="animated fadeInDown">
+							Book <span class="fa-angle-right fa"></span> List
+						</p>
+					</div>
+				</div>
+			</div>
+            <div class="col-md-12 top-20 padding-0">
+            	<div class="col-md-12">
                   <div class="panel">
                     <div class="panel-body">
                       <div class="responsive-table">
