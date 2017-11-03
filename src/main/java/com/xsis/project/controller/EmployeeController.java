@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.xsis.project.model.Publisher;
-import com.xsis.project.model.Shelf;
-import com.xsis.project.service.PublisherService;
-import com.xsis.project.service.ShelfService;
+import com.xsis.project.service.ReturnTransactionService;
 import com.xsis.project.model.Employee;
 import com.xsis.project.service.EmployeeService;
 
@@ -27,8 +24,8 @@ public class EmployeeController {
 
 	@Autowired
 	EmployeeService employeeService;
-	@Autowired
-	BorrowTransactionService borrowTransactionService;
+	/*@Autowired
+	BorrowTransactionService borrowTransactionService;*/
 	@Autowired
 	ReturnTransactionService returnTransactionService;
 

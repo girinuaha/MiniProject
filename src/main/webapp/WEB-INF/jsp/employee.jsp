@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Library MASA | BOOK</title>
+<title>Library MASA | Employee</title>
 
   <!-- start: Css -->
   <link rel="stylesheet" type="text/css" href="assets/asset/css/bootstrap.min.css">
@@ -15,6 +15,7 @@
   <link rel="stylesheet" type="text/css" href="assets/asset/css/plugins/simple-line-icons.css"/>
   <link rel="stylesheet" type="text/css" href="assets/asset/css/plugins/datatables.bootstrap.min.css"/>
   <link rel="stylesheet" type="text/css" href="assets/asset/css/plugins/animate.min.css"/>
+  <link rel="stylesheet" type="text/css" href="assets/asset/css/plugins/bootstrap-material-datetimepicker.css"/>
   <link href="assets/asset/css/style.css" rel="stylesheet">
   <!-- end: Css -->
 
@@ -118,11 +119,6 @@
                     		<span class="fa fa-newspaper-o"></span> Publisher  <span class="fa-angle-right fa right-arrow text-right"></span>
                     	</a>
                     </li>
-                    <li class="active ripple">
-                    	<a class="nav-header" href="book_stock">
-                    		<span class="fa fa-balance-scale"></span> Book Stock  <span class="fa-angle-right fa right-arrow text-right"></span>
-                    	</a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -132,9 +128,9 @@
 			<div class="panel box-shadow-none content-header">
 				<div class="panel-body">
 					<div class="col-md-12">
-						<h3 class="animated fadeInLeft">Book</h3>
+						<h3 class="animated fadeInLeft">Employee</h3>
 						<p class="animated fadeInDown">
-							Book <span class="fa-angle-right fa"></span> List
+							Employee <span class="fa-angle-right fa"></span> List
 						</p>
 					</div>
 				</div>
@@ -145,45 +141,30 @@
                     <div class="panel-body">
                       <div class="responsive-table">
                       
-                      <button class="btn btn-success tree-toggle icon-box"><span class="fa fa-plus"/> Add Book</button><br><br>
+                      <button class="btn btn-success tree-toggle icon-box"><span class="fa fa-plus"/> Add Employee</button><br><br>
                       <ul class="nav nav-list tree">
-                        <form action="book/save" method="POST">
-							<div class="form-row">
-							    <div class="form-group col-md-6">
-								    <label>ISBN</label>
-								    <input type="text" class="form-control" name="isbn">
+                        <form action="employee/save" method="POST">
+							<div class="col-md-6">
+							    <div class="form-group form-animate-text" style="margin-top:40px !important;">								    
+								    <input type="text" class="form-text" name="name" id="name" required>
+								    <span class="bar"></span><label>Name</label>
 								</div>
-								<div class="form-group col-md-6">
-							    	<label>Title</label>
-							    	<input class="form-control" type="text" name="title"></td>
+								<div class="form-group form-animate-text" style="margin-top:40px !important;">							   
+							    	<input type="text" class="form-text" name="address" id="address" required>
+							    	<span class="bar"></span><label>Address</label>
 								</div>
-								<div class="form-group col-md-6">
-							    	<label>Author</label>
-							    	<input type="text" class="form-control" name="author">
+								<div class="form-group form-animate-text" style="margin-top:40px !important;">							    	
+							    	<input type="email" class="form-text" name="email" id="email" required>
+							    	<span class="bar"></span><label>Email</label>
 							  	</div>
-							  	<div class="form-group col-md-6">
-							    	<label>Released Year</label>
-							    	<input type="text" class="form-control" name="releasedYear">
+							  	<div class="form-group form-animate-text" style="margin-top:40px !important;">							    	
+							    	<input type="text" class="form-text" name="phoneNumber" id="phoneNumber" required>
+							    	<span class="bar"></span><label>Phone Number</label>
 							  	</div>
-							  	<div class="form-group col-md-6">
-							    	<label>Publisher</label>
-							    	<select class="form-control" name="publisher.id">
-							    		<c:forEach var="publisher" items="${publishers }">
-							    			<option value="${publisher.id }" label="${publisher.name }"/>
-							    		</c:forEach>
-							    	</select>
-							  	</div>
-							  	<div class="form-group col-md-6">
-							    	<label>Category</label>
-							    	<select class="form-control" name="shelf.id">
-							    		<c:forEach var="shelf" items="${shelfs }">
-							    			<option value="${shelf.id }" label="${shelf.category }"/>
-							    		</c:forEach>
-							    	</select>
-							  	</div>
-							  	<div class="form-group col-md-6">
-							    	<label>Stock</label>
-							    	<input type="text" class="form-control" name="bookStock.stock">
+							  	<div class="form-group form-animate-text" style="margin-top:40px !important;">
+							  		<input type="text" class="form-text" name="birthDate" id="birthDate" required>
+							    	<span class="bar"></span>
+                          			<label><span class="bar"></span>Birth Date</label>   	
 							  	</div>
 							  	<div class="form-group col-md-6"><br><br><br>
 							  		<button type="submit" class="btn btn-primary col-md-4" style="float: right;">Save</button><br><br><br><br>
@@ -192,27 +173,28 @@
 						</form>
                       </ul>
                       
-                      <table id="book-list" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                      <table id="employee-list" class="table table-striped table-bordered" width="100%" cellspacing="0">
 	                      <thead>
 	                        <tr>
-								<th>Title</th>
-								<th>Author</th>
-								<th>Publisher</th>
-								<th>Category</th>
-								<th style="width: 20%;">Action</th>
+								<th>Name</th>
+								<th>Address</th>
+								<th>Email</th>
+								<th>Phone Number</th>
+								<th>Birth Date</th>
+								<th style="width: 15%;">Action</th>
 							</tr>
 	                      </thead>
 	                      <tbody>
-	                        <c:forEach var="book" items="${books }">
+	                        <c:forEach var="employee" items="${employees }">
 								<tr>
-									<td>${book.title }</td>
-									<td>${book.author }</td>
-									<td>${book.publisher.name }</td>
-									<td>${book.shelf.category }</td>
+									<td>${employee.name }</td>
+									<td>${employee.address }</td>
+									<td>${employee.email }</td>
+									<td>${employee.phoneNumber }</td>
+									<td>${employee.birthDate }</td>
 									<td>
-										<button class="btn btn-success btn-sm detail-btn icon-box" data-id="${book.id}" title="Detail"><span class="icons icon-eye"></span></button>&nbsp;
-										<button class="btn btn-warning btn-sm update-btn icon-box" data-id="${book.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
-										<button class="btn btn-danger btn-sm delete-btn icon-box" data-id="${book.id}" title="Delete"><span class="icons icon-trash"></span></button>
+										<button class="btn btn-warning btn-sm update-btn icon-box" data-id="${employee.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
+										<button class="btn btn-danger btn-sm delete-btn icon-box" data-id="${employee.id}" title="Delete"><span class="icons icon-trash"></span></button>
 									</td>
 								</tr>
 							</c:forEach>
@@ -238,51 +220,30 @@
 	<script src="assets/asset/js/plugins/jquery.datatables.min.js"></script>
 	<script src="assets/asset/js/plugins/datatables.bootstrap.min.js"></script>
 	<script src="assets/asset/js/plugins/jquery.nicescroll.js"></script>
+	<script src="assets/asset/js/plugins/bootstrap-material-datetimepicker.js"></script>
 	
 	<!-- custom -->
 	<script src="assets/asset/js/main.js"></script>
 	<script type="text/javascript">
 	  $(document).ready(function(){
-	    $('#book-list').DataTable();
+	    $('#employee-list').DataTable();
 	  });
+	  //datepicker
+	  $(document).ready(function(){
+			$('#birthDate').bootstrapMaterialDatePicker({ 
+				weekStart : 0, 
+				time: false, 
+				maxDate : new Date(),
+				format : 'DD/MM/YYYY'
+			});
+		});
 	</script>
 	<!-- end: Javascript -->
 	
 	<script type="text/javascript">
 		
 		var id = 0;
-		
-		//detail
-		$(document).ready(function (){
-			$('.detail-btn').on('click',function() {
-				
-				id = $(this).data('id');
-				
-				//ajax retrive data
-				$.ajax({
-					type: 'POST',
-					url: '/book/edit/'+id,
-					success: function(data) {		
-						setField(data);
-					},
-					dataType: 'json'
-				});
-				
-				$('#detail-modal').modal();
-			});
 			
-			function setField(data) {
-				$('#detail-isbn').val(data.isbn);
-				$('#detail-title').val(data.title);
-				$('#detail-author').val(data.author);
-				$('#detail-releasedYear').val(data.releasedYear);
-				$('#detail-publisher').val(data.publisher.name);
-				$('#detail-bookStock').val(data.bookStock.stock);
-				$('#detail-category').val(data.shelf.category);
-			}
-		});
-		
-		
 		//update
 		$(document).ready(function (){
 			$('.update-btn').on('click',function() {
@@ -292,7 +253,7 @@
 				//ajax retrive data
 				$.ajax({
 					type: 'POST',
-					url: '/book/edit/'+id,
+					url: '/employee/edit/'+id,
 					success: function(data) {		
 						setField(data);
 					},
@@ -303,44 +264,32 @@
 			});
 			
 			function setField(data) {
-				$('#isbn').val(data.isbn);
-				$('#title').val(data.title);
-				$('#author').val(data.author);
-				$('#releasedYear').val(data.releasedYear);
-				$('#publisher').val(data.publisher.id);
-				$('#bookStockId').val(data.bookStock.id);
-				$('#bookStock').val(data.bookStock.stock);
-				$('#category').val(data.shelf.id);
+				$('#modname').val(data.name);
+				$('#modaddress').val(data.address);
+				$('#modemail').val(data.email);
+				$('#modphoneNumber').val(data.phoneNumber);
+				$('#modbirthDate').val(data.birthDate);
 			}
 			
 			//submit update
 			$('#submit-update').click(function(){
-				var Book = {
+				var Employee = {
 					id : id,
-					isbn : $('#isbn').val(),
-					title : $('#title').val(),
-					author : $('#author').val(),
-					releasedYear : $('#releasedYear').val(),
-					publisher : {
-						id : $('#publisher').val()
-					},
-					bookStock : {
-						id : $('#bookStockId').val(),
-						stock : $('#bookStock').val()
-					},
-					shelf : {
-						id : $('#category').val()
-					}
+					name : $('#modname').val(),
+					address : $('#modaddress').val(),
+					email : $('#modemail').val(),
+					phoneNumber : $('#modphoneNumber').val(),
+					birthDate : $('#modbirthDate').val()
 				};
 				
 				// ajax update
 				$.ajax({
 					type: 'PUT',
-					url: '/book/update',
+					url: '/employee/update',
 					contentType: "application/json",
-					data : JSON.stringify(Book),
+					data : JSON.stringify(Employee),
 					success: function(data) {		
-						window.location = "/book";
+						window.location = "/employee";
 					}
 				});
 			});
@@ -359,63 +308,14 @@
 				
 				$.ajax({
 					type: 'DELETE',
-					url: '/book/delete/'+id,
+					url: '/employee/delete/'+id,
 					success: function(data) {		
-						window.location = "/book";
+						window.location = "/employee";
 					}
 				});
 			});
 		});
 	</script>
-	
-	<!-- Detail Update -->
-	<div class="col-md-12">
-		<div class="modal fade"  id="detail-modal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title">Book Details</h4>
-		        </div>
-		        <div class="modal-body">
-		        	<form style="margin-top: 3%;">
-						<div class="form-row">
-						    <div class="form-group col-md-6">
-							    <label>ISBN</label>
-							    <input type="text" class="form-control" id="detail-isbn" disabled>
-							</div>
-							<div class="form-group col-md-6">
-						    	<label>Author</label>
-						    	<input type="text" class="form-control" id="detail-author" disabled>
-						  	</div>
-							<div class="form-group" style="margin-left:2.5%; margin-right: 2.5%;">
-						    	<label>Title</label>
-						    	<input class="form-control" type="text" id="detail-title" disabled>
-							</div>
-						  	<div class="form-group col-md-6">
-						    	<label>Released Year</label>
-						    	<input type="text" class="form-control" id="detail-releasedYear" disabled>
-						  	</div>
-						  	<div class="form-group col-md-6">
-						    	<label>Publisher</label>
-						    	<input class="form-control" id="detail-publisher" disabled>
-						  	</div>
-						  	<div class="form-group col-md-6">
-						    	<label>Category</label>
-						    	<input class="form-control" id="detail-category" disabled>
-						  	</div>
-						  	<div class="form-group col-md-6">
-						    	<label>Stock</label>
-						    	<input type="text" class="form-control" id="detail-bookStock" disabled>
-						  	</div>
-						  	<label> </label>
-						</div>
-					</form>
-		        </div>
-	        </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-   	</div>
 	
 	<!-- Modal Update -->
 	<div class="col-md-12">
@@ -424,48 +324,31 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title">Update Book</h4>
+			        <h4 class="modal-title">Update Employee</h4>
 		        </div>
 		        <div class="modal-body">
 		        	<form style="margin-top: 3%;">
 						<div class="form-row">
 						    <div class="form-group col-md-6">
-							    <label>ISBN</label>
-							    <input type="text" class="form-control" name="isbn" id="isbn">
+							    <label>Name</label>
+							    <input type="text" class="form-control" id="modname" name="modname">
 							</div>
 							<div class="form-group col-md-6">
-						    	<label>Author</label>
-						    	<input type="text" class="form-control" name="author" id="author">
-						  	</div>
-							<div class="form-group" style="margin-left:2.5%; margin-right: 2.5%;">
-						    	<label>Title</label>
-						    	<input class="form-control" type="text" name="title" id="title"></td>
+						    	<label>Email</label>
+						    	<input class="form-control" type="email" id="modemail" name="modemail">
 							</div>
-						  	<div class="form-group col-md-6">
-						    	<label>Released Year</label>
-						    	<input type="text" class="form-control" name="releasedYear" id="releasedYear">
+							<div class="form-group" style="margin-left:2.5%; margin-right: 2.5%;">
+						    	<label>Address</label>
+						    	<input type="text" class="form-control" id="modaddress" name="modaddress">
 						  	</div>
 						  	<div class="form-group col-md-6">
-						    	<label>Publisher</label>
-						    	<select class="form-control" name="publisher" id="publisher">
-						    		<c:forEach var="publisher" items="${publishers }">
-						    			<option value="${publisher.id }" label="${publisher.name }"/>
-						    		</c:forEach>
-						    	</select>
+						    	<label>Phone Number</label>
+						    	<input type="text" class="form-control" name="modphoneNumber" id="modphoneNumber">
 						  	</div>
 						  	<div class="form-group col-md-6">
-						    	<label>Category</label>
-						    	<select class="form-control" name="category" id="category">
-						    		<c:forEach var="shelf" items="${shelfs }">
-						    			<option value="${shelf.id }" label="${shelf.category }"/>
-						    		</c:forEach>
-						    	</select>
-						  	</div>
-						  	<div class="form-group col-md-6">
-						    	<label>Stock</label>
-						    	<input type="hidden" class="form-control" name="bookStockId" id="bookStockId">
-						    	<input type="text" class="form-control" name="bookStock" id="bookStock">
-						  	</div>
+						    	<label>Birth Date</label>
+						    	<input type="date" class="form-control" name="modbirthDate" id="modbirthDate">
+						  	</div>	
 						  	<label> </label>
 						</div>
 					</form>
@@ -486,7 +369,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title">Delete Book</h4>
+			        <h4 class="modal-title">Delete Employee</h4>
 		        </div>
 		        <div class="modal-body">
 		        	<h4>Are you sure?</h4>
