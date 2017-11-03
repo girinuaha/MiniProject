@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Library MASA | BOOK</title>
+<title>Library MASA | Rent History</title>
 
   <!-- start: Css -->
   <link rel="stylesheet" type="text/css" href="assets/asset/css/bootstrap.min.css">
@@ -165,8 +165,19 @@
 								    	</c:forEach>
 							    	</select>
 							  	</div>
+							  	<div class="form-group col-md-6">
+								    <label>Book</label>
+								    <select class="form-control bookTransaction" name="bookTransaction.id">
+								    	<option></option>
+							    		<c:forEach var="bookTransactions" items="${bookTransactions }">
+							    			<option value="${bookTransactions.id }">${bookTransactions.book.title }</option>
+							    		</c:forEach>
+							    	</select>
+								</div>
 							</div>
+							<div class="form-group col-md-6">
 							<button type="submit" class="btn btn-primary">Save</button><br><br><br><br>
+							</div>
 						</form>
                     </div>
                   </div>
@@ -209,6 +220,10 @@
         
         $(".employee").select2({
             placeholder: "Select a employee",
+            allowClear: true
+        });
+        $(".bookTransaction").select2({
+            placeholder: "Select a book",
             allowClear: true
         });
     </script>

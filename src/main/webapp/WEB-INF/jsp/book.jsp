@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Library MASA | BOOK</title>
+<title>Library MASA | Book</title>
 
   <!-- start: Css -->
   <link rel="stylesheet" type="text/css" href="assets/asset/css/bootstrap.min.css">
