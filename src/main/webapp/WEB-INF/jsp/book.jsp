@@ -82,13 +82,13 @@
                       <h1 class="animated fadeInLeft">21:00</h1>
                       <p class="animated fadeInRight">Sat,October 1st 2029</p>
                     </li>
-                    <li class="active ripple">
+                    <li class="active ripple animated fadeInLeft">
                     	<a class="nav-header" href="book">
                     		<span class="fa fa-book"></span> Books  
                     		<span class="fa-angle-right fa right-arrow text-right"></span>
                     	</a>
                     </li>
-                    <li class="active ripple">
+                    <li class="ripple animated fadeInRight">
                     	<a class="tree-toggle nav-header">
                     		<span class="fa fa-money"></span> Rent History 
                     		<span class="fa-angle-right fa right-arrow text-right"></span>

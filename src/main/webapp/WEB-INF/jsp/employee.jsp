@@ -83,38 +83,38 @@
                       <h1 class="animated fadeInLeft">21:00</h1>
                       <p class="animated fadeInRight">Sat,October 1st 2029</p>
                     </li>
-                    <li class="active ripple">
+                    <li class="ripple animated fadeInLeft">
                     	<a class="nav-header" href="book">
                     		<span class="fa fa-book"></span> Books  
                     		<span class="fa-angle-right fa right-arrow text-right"></span>
                     	</a>
                     </li>
-                    <li class="active ripple">
+                    <li class="ripple animated fadeInRight">
                     	<a class="tree-toggle nav-header">
                     		<span class="fa fa-money"></span> Rent History 
                     		<span class="fa-angle-right fa right-arrow text-right"></span>
                     	</a>
                     	<ul class="nav nav-list tree">
 	                        <li><a href="rent_history">Book Rent List</a></li>
-	                        <li><a href="handsontable.html">Borrow Book</a></li>
+	                        <li><a href="borrow_transaction">Borrow Book</a></li>
                       	</ul>
                     </li>
-                    <li class="active ripple">
+                    <li class="ripple animated fadeInLeft">
                     	<a class="nav-header" href="customer">
                     		<span class="fa fa-users"></span> Customer  <span class="fa-angle-right fa right-arrow text-right"></span>
                     	</a>
                     </li>
-                    <li class="active ripple">
+                    <li class=" active ripple animated fadeInRight">
                     	<a class="nav-header" href="employee">
                     		<span class="fa fa-user"></span> Employee  <span class="fa-angle-right fa right-arrow text-right"></span>
                     	</a>
                     </li>
-                    <li class="active ripple">
+                    <li class="ripple animated fadeInLeft">
                     	<a class="nav-header" href="shelf">
                     		<span class="fa fa-archive"></span> Shelf  <span class="fa-angle-right fa right-arrow text-right"></span>
                     	</a>
                     </li>
-                    <li class="active ripple">
+                    <li class="ripple animated fadeInRight">
                     	<a class="nav-header" href="publisher">
                     		<span class="fa fa-newspaper-o"></span> Publisher  <span class="fa-angle-right fa right-arrow text-right"></span>
                     	</a>
