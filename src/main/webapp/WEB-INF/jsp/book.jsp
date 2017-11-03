@@ -95,7 +95,7 @@
                     	</a>
                     	<ul class="nav nav-list tree">
 	                        <li><a href="rent_history">Book Rent List</a></li>
-	                        <li><a href="handsontable.html">Borrow Book</a></li>
+	                        <li><a href="borrow_transaction">Borrow Book</a></li>
                       	</ul>
                     </li>
                     <li class="ripple animated fadeInLeft">
