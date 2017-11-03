@@ -25,7 +25,12 @@
 				<value>com.xsis.project.model.BookStock</value>
 				<value>com.xsis.project.model.Publisher</value>
 				<value>com.xsis.project.model.Shelf</value>
+				<value>com.xsis.project.model.Employee</value>
+				<value>com.xsis.project.model.Customer</value>
 				<value>com.xsis.project.model.RentHistory</value>
+				<value>com.xsis.project.model.BorrowTransaction</value>
+				<value>com.xsis.project.model.BookTransaction</value>
+				<value>com.xsis.project.model.ReturnTransaction</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

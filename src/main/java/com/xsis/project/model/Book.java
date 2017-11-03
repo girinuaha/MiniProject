@@ -32,14 +32,14 @@ public class Book {
 	@OneToOne
 	@JoinColumn(name="book_stock_id")
 	private BookStock bookStock;
-	/*@ManyToOne
+	@ManyToOne
 	@JoinColumn(name="book_transaction_id")
-	private BookTransaction bookTransaction;*/
+	private BookTransaction bookTransaction;
 	
 	public Book() { }
 
 	public Book(int id, String isbn, String title, String author, String releasedYear, Publisher publisher, Shelf shelf,
-			BookStock bookStock) {
+			BookStock bookStock, BookTransaction bookTransaction) {
 		super();
 		this.id = id;
 		this.isbn = isbn;
@@ -49,6 +49,7 @@ public class Book {
 		this.publisher = publisher;
 		this.shelf = shelf;
 		this.bookStock = bookStock;
+		this.bookTransaction = bookTransaction;
 	}
 
 	public int getId() {
@@ -113,5 +114,13 @@ public class Book {
 
 	public void setBookStock(BookStock bookStock) {
 		this.bookStock = bookStock;
+	}
+
+	public BookTransaction getBookTransaction() {
+		return bookTransaction;
+	}
+
+	public void setBookTransaction(BookTransaction bookTransaction) {
+		this.bookTransaction = bookTransaction;
 	}
 }

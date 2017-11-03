@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,22 +28,25 @@ public class RentHistory {
 	@Column(name="due_date")
 	private Date dueDate;
 	private int fine;
-	/*@OneToOne
+	@OneToOne
 	@JoinColumn(name="BORROW_TRANSACTION_ID")
 	private BorrowTransaction borrowTransaction;
 	@OneToOne
 	@JoinColumn(name="RETURN_TRANSACTION_ID")
-	private ReturnTransaction returnTransaction;*/
+	private ReturnTransaction returnTransaction;
 	
 	public RentHistory() {
 		
 	}
 
-	public RentHistory(int id, Date dueDate, int fine) {
+	public RentHistory(int id, Date dueDate, int fine, BorrowTransaction borrowTransaction,
+			ReturnTransaction returnTransaction) {
 		super();
 		this.id = id;
 		this.dueDate = dueDate;
 		this.fine = fine;
+		this.borrowTransaction = borrowTransaction;
+		this.returnTransaction = returnTransaction;
 	}
 
 	public int getId() {
@@ -66,5 +71,21 @@ public class RentHistory {
 
 	public void setFine(int fine) {
 		this.fine = fine;
+	}
+
+	public BorrowTransaction getBorrowTransaction() {
+		return borrowTransaction;
+	}
+
+	public void setBorrowTransaction(BorrowTransaction borrowTransaction) {
+		this.borrowTransaction = borrowTransaction;
+	}
+
+	public ReturnTransaction getReturnTransaction() {
+		return returnTransaction;
+	}
+
+	public void setReturnTransaction(ReturnTransaction returnTransaction) {
+		this.returnTransaction = returnTransaction;
 	}	
 }
