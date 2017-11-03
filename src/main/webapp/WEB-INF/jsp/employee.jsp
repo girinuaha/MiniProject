@@ -163,7 +163,7 @@
 	                       	</div>
 	                       	<div class="col-md-6">
 	                       		<div class="form-group form-animate-text" style="margin-top:10px !important;">
-	                       			<input type="text" class="form-text" name="phoneNumber" required>
+	                       			<input type="text" class="form-text mask-phone" name="phoneNumber" required>
 	                       			<span class="bar"></span>
 	                       			<label>Phone Number</label>
 	                       		</div>
@@ -228,12 +228,14 @@
 	<script src="assets/asset/js/plugins/jquery.nicescroll.js"></script>
 	<script src="assets/asset/js/plugins/bootstrap-material-datetimepicker.js"></script>
 	<script src="assets/asset/js/plugins/jquery.validate.min.js"></script>
+	<script src="assets/asset/js/plugins/jquery.mask.min.js"></script>
 	
 	<!-- custom -->
 	<script src="assets/asset/js/main.js"></script>
 	<script type="text/javascript">
 	  $(document).ready(function(){
 	    $('#employee-list').DataTable();
+	    $('.mask-phone').mask('0000-0000-0000');
 	  });
 	  
 	  //form validate
