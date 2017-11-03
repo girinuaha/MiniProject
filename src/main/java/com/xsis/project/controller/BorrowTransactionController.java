@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.xsis.project.model.Book;
 import com.xsis.project.model.BorrowTransaction;
 import com.xsis.project.model.Customer;
 import com.xsis.project.model.Employee;
+import com.xsis.project.service.BookService;
 import com.xsis.project.service.BorrowTransactionService;
 import com.xsis.project.service.CustomerService;
 import com.xsis.project.service.EmployeeService;
@@ -26,6 +28,8 @@ public class BorrowTransactionController {
 	CustomerService customerService;
 	@Autowired
 	EmployeeService employeeService;
+	@Autowired
+	BookService bookService;
 	
 	
 	@RequestMapping(method = RequestMethod.GET)
@@ -35,6 +39,9 @@ public class BorrowTransactionController {
 		
 		List<Employee> employees = employeeService.getAllEmployees();
 		model.addAttribute("employees", employees);
+		
+		List<Book> books = bookService.getAllBook();
+		model.addAttribute("books", books);
 		return "borrowTransaction";
 	}
 	

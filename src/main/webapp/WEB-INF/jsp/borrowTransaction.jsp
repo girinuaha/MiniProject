@@ -136,7 +136,7 @@
 					</div>
 				</div>
 			</div>
-            <div class="col-md-12 top-20 padding-0">
+            <%-- <div class="col-md-12 top-20 padding-0">
             	<div class="col-md-12">
                   <div class="panel">
                     <div class="panel-body">
@@ -160,17 +160,17 @@
 							    	<select class="form-control employee" name="employee.id">
 							    		<c:forEach var="employee" items="${employees }">
 							    			<option value="${employee.id }">${employee.name }</option>
-								    		<%-- <input type="hidden" class="form-control" name="employee.id" value="${employees.id }">
-								    		<input type="text" class="form-control" value="${employees.name }"> --%>
+								    		<input type="hidden" class="form-control" name="employee.id" value="${employees.id }">
+								    		<input type="text" class="form-control" value="${employees.name }">
 								    	</c:forEach>
 							    	</select>
 							  	</div>
-							  	<div class="form-group col-md-6">
+							  	<div class="form-group col-md-12 book">
 								    <label>Book</label>
 								    <select class="form-control bookTransaction" name="bookTransaction.id">
 								    	<option></option>
-							    		<c:forEach var="bookTransactions" items="${bookTransactions }">
-							    			<option value="${bookTransactions.id }">${bookTransactions.book.title }</option>
+							    		<c:forEach var="book" items="${books }">
+							    			<option value="${book.id }">${book.title }</option>
 							    		</c:forEach>
 							    	</select>
 								</div>
@@ -179,6 +179,24 @@
 							<button type="submit" class="btn btn-primary">Save</button><br><br><br><br>
 							</div>
 						</form>
+                    </div>
+                  </div>
+                </div>  
+            </div> --%>
+            <div class="col-md-12 top-20 padding-0">
+            	<div class="col-md-12">
+                  <div class="panel">
+                    <div class="panel-body">
+                    	<form method="POST">
+						     <div id="dynamicInput">
+						          
+						     </div>
+						     <input type="button" value="Add another text input" onClick="addInput('dynamicInput');">
+						</form>
+						<ul id="fields">
+    
+						</ul>
+						<input type="button" onclick="createinput()" value="Click me!"></input>
                     </div>
                   </div>
                 </div>  
@@ -226,6 +244,61 @@
             placeholder: "Select a book",
             allowClear: true
         });
+    </script>
+    
+    <script type="text/javascript">
+    var counter = 0;
+    var limit = 3;
+    function addInput(divName){
+         if (counter == limit)  {
+              alert("You have reached the limit of adding " + counter + " inputs");
+         }
+         else {
+              var newdiv = document.createElement('div');
+              newdiv.innerHTML = "Entry " + (counter + 1) + 
+              "<select class='form-control employee' name='employee.id'><option>Auto</option><option>Auto</option><option>Auto</option></select>";
+              document.getElementById(divName).appendChild(newdiv);
+              counter++;
+              
+              var removalLink = document.createElement('a');
+              removalLink.onclick = function(){
+                  this.parentNode.parentNode.removeChild(this.parentNode)
+              }
+              
+              var removalText = document.createTextNode('Remove Field');
+              removalLink.appendChild(removalText);
+           	li.appendChild(removalLink);
+           	count++
+         }
+    }
+    </script>
+    
+    <script type="text/javascript">
+    count = 0;
+    createinput =function (){
+        field_area = document.getElementById('fields')
+    	var li = document.createElement("li");
+        var input = document.createElement("select");
+        input.id = 'field'+count;
+        input.name = 'field'+count;
+        input.type = "text"; //Type of field - can be any valid input type like text,file,checkbox etc.
+        li.appendChild(input);
+        field_area.appendChild(li);
+        
+        //create the removal link
+        var removalLink = document.createElement('a');
+        removalLink.onclick = function(){
+            this.parentNode.parentNode.removeChild(this.parentNode)
+        }
+        
+        var removalText = document.createTextNode('Remove Field');
+        removalLink.appendChild(removalText);
+     	li.appendChild(removalLink);
+     	count++
+    }
+    </script>
+    <script type="text/javascript">
+    	
     </script>
 </body>
 </html>
