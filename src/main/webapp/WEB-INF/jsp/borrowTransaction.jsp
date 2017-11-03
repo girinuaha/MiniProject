@@ -200,8 +200,7 @@
         
         $(".customer").select2({
             placeholder: "Select a customer",
-            allowClear: true,
-            tags: true
+            allowClear: true
         });
     </script>
 </body>

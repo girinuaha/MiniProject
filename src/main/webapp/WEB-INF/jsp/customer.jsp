@@ -144,41 +144,40 @@
                       
                       <button class="tree-toggle btn btn-success icon-box add-btn"><span class="fa fa-plus"/> Add Customer</button><br><br>
                       <ul class="nav nav-list tree">
-                        	<form id="add-form" method="POST" action="customer/save">
-                          		<div class="col-md-6">
-                            		<div class="form-group form-animate-text" style="margin-top:10px !important;">
-                              			<input type="text" class="form-text" name="name" required>
-								    	<span class="bar"></span>
-	                              		<label>Name</label>
-		                            </div>
-		                            <div class="form-group form-animate-text" style="margin-top:10px !important;">
-		                            	<input class="form-text" type="text" name="address" required>
-									    <span class="bar"></span>
-			                            <label>Address</label>
-		                            </div>
-		                            <div class="form-group form-animate-text" style="margin-top:10px !important;">
-		                              	<input type="text" class="form-text" name="email" required>
-									    <span class="bar"></span>
-			                            <label>E-mail</label>
-		                            </div>
-		                        </div>
-		                        <div class="col-md-6">
-		                            <div class="form-group form-animate-text" style="margin-top:10px !important;">
-		                              <input type="text" class="form-text" name="phoneNumber" required>
-									    	<span class="bar"></span>
-			                              	<label>Phone Number</label>
-		                            </div>
-		
-		                            <div class="form-group form-animate-text" style="margin-top:10px !important;">
-		                              <input type="text" class="form-text" name="birthDate" id="birthDate" required>
-									  		<span class="bar"></span>
-			                              	<label>Birth Date</label>
-		                            </div>
-		                       </div>                   
+                      	<form id="add-form" method="POST" action="customer/save">
+                      		<div class="col-md-6">
+                      			<div class="form-group form-animate-text" style="margin-top:10px !important;">
+                              		<input type="text" class="form-text" name="name" required>
+								    <span class="bar"></span>
+	                              	<label>Name</label>
+	                            </div>
+	                            <div class="form-group form-animate-text" style="margin-top:10px !important;">
+	                            	<input class="form-text" type="text" name="address" required>
+	                            	<span class="bar"></span>
+	                            	<label>Address</label>
+	                            </div>
+	                            <div class="form-group form-animate-text" style="margin-top:10px !important;">
+	                            	<input type="text" class="form-text" name="email" required>
+	                            	<span class="bar"></span>
+	                            	<label>E-mail</label>
+	                            </div>
+	                       	</div>
+	                       	<div class="col-md-6">
+	                       		<div class="form-group form-animate-text" style="margin-top:10px !important;">
+	                       			<input type="text" class="form-text" name="phoneNumber" required>
+	                       			<span class="bar"></span>
+	                       			<label>Phone Number</label>
+	                       		</div>
+	                       		<div class="form-group form-animate-text" style="margin-top:10px !important;">
+	                       			<input type="text" class="form-text" name="birthDate" id="birthDate" required>
+	                       			<span class="bar"></span>
+	                       			<label>Birth Date</label>
+	                       		</div>
+	                       	</div>                   
                           <div class="col-md-12">
-                              <input class="submit btn btn-primary" type="submit" value="Submit"><br><br><br>
-                        </div>
-                      </form>
+                          	<input class="submit btn btn-primary" type="submit" value="Submit"><br><br><br>
+                          </div>
+                      	</form>
                       </ul>
                       <table id="customer-list" class="table table-striped table-bordered" width="100%" cellspacing="0">
 	                      <thead>
