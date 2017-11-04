@@ -140,7 +140,7 @@
             	<div class="col-md-12">
                   <div class="panel">
                     <div class="panel-body">
-                    	<form action="borrow_transaction/save" method="POST">
+                    	<form action="borrow_transaction/save" method="POST" id="borrowForm">
 							<div class="form-row">
 							    <div class="form-group col-md-6">
 								    <label>Customer</label>
@@ -158,48 +158,49 @@
 							  	<div class="form-group col-md-6">
 							    	<label>Employee</label>
 							    	<select class="form-control employee" name="employee.id">
+							    	<option></option>
 							    		<c:forEach var="employee" items="${employees }">
 							    			<option value="${employee.id }">${employee.name }</option>
 								    	</c:forEach>
 							    	</select>
 							  	</div>
-							  	<div class="form-group col-md-12 book">
-								    <label>Book</label>
-								    <select class="form-control bookTransaction" name="bookTransaction.id">
-								    	<option></option>
-							    		<c:forEach var="book" items="${books }">
-							    			<option value="${book.id }">${book.title }</option>
-							    		</c:forEach>
-							    	</select>
+							  	<div class="form-group">
+								  	<div class="col-md-11 book">
+								  		<label>Book</label>
+									    <select class="form-control bookTransaction" name="bookTransaction[0].id" style="width: 100%;">
+									    	<option></option>
+								    		<c:forEach var="book" items="${books }">
+								    			<option value="${book.id }">${book.title }</option>
+								    		</c:forEach>
+								    	</select>
+								  	</div>
+							    	<div class="col-md-1">
+								    	<label></label>
+										<button type="button" class="btn btn-success addButton"><i class="fa fa-plus"></i></button><br><br>
+									</div>
 								</div>
+								<div class="form-group hide" id="bookTemplate">
+									<div class="col-md-11 book">
+									    <select class="form-control" name="bookTransaction.id">
+									    	<option></option>
+								    		<c:forEach var="book" items="${books }">
+								    			<option value="${book.id }">${book.title }</option>
+								    		</c:forEach>
+								    	</select>
+								  	</div>
+								  	<div class="col-md-1">
+							            <button type="button" class="btn btn-danger removeButton"><i class="fa fa-minus"></i></button><br><br>
+							        </div>
+							    </div>
 							</div>
 							<div class="form-group col-md-6">
-							<button type="submit" class="btn btn-primary">Save</button><br><br><br><br>
+								<button type="submit" class="btn btn-primary">Save</button><br><br><br><br>
 							</div>
 						</form>
                     </div>
                   </div>
                 </div>  
             </div>
-            <div class="col-md-12 top-20 padding-0">
-            	<div class="col-md-12">
-                  <div class="panel">
-                    <div class="panel-body">
-                    	<form method="POST">
-						     <div id="dynamicInput">
-						          
-						     </div>
-						     <input type="button" value="Add another text input" onClick="addInput('dynamicInput');">
-						</form>
-						<ul id="fields">
-    
-						</ul>
-						<input type="button" onclick="createinput()" value="Click me!"></input>
-                    </div>
-                  </div>
-                </div>  
-            </div>
-          </div>
           <!-- end: content -->         
       </div>
 
@@ -222,6 +223,47 @@
 	<script src="assets/asset/js/main.js"></script>
 	
 	<script>
+	$(document).ready(function() {
+	    var bookIndex = 0;
+	
+	    $('#borrowForm')
+	        // Add button click handler
+	        .on('click', '.addButton', function() {
+	        	bookIndex++;
+	            var $template = $('#bookTemplate'),
+	                $clone    = $template
+	                                .clone()
+	                                .removeClass('hide')
+	                                .removeAttr('id')
+	                                .attr('data-book-index', bookIndex)
+	                                .insertBefore($template);
+	
+	            // Update the name attributes
+	            $clone
+	                .find('[name="bookTransaction.id"]').attr('name', 'bookTransaction[' + bookIndex + '].id').end()
+	                .find('[name="bookTransaction['+bookIndex+'].id"]').select2({
+	                	placeholder: "Select a book",
+	                    allowClear: true
+	                })
+	        })
+	
+	        // Remove button click handler
+	        .on('click', '.removeButton', function() {
+	            var $row  = $(this).parents('.form-group'),
+	                index = $row.attr('data-book-index');
+	            
+	            // Remove element containing the fields
+	            $row.remove();
+	        });
+	    
+	   $("#bookTransaction['+bookIndex+'].id").select2({
+            placeholder: "Select a book",
+            allowClear: true
+        }); 
+	});
+	</script>
+	
+	<script>
         $('#borrowDate').bootstrapMaterialDatePicker({
         	weekStart : 0, 
 	       	time: false,
@@ -242,61 +284,6 @@
             placeholder: "Select a book",
             allowClear: true
         });
-    </script>
-    
-    <script type="text/javascript">
-    var counter = 0;
-    var limit = 3;
-    function addInput(divName){
-         if (counter == limit)  {
-              alert("You have reached the limit of adding " + counter + " inputs");
-         }
-         else {
-              var newdiv = document.createElement('div');
-              newdiv.innerHTML = "Entry " + (counter + 1) + 
-              "<select class='form-control employee' name='employee.id'><option>Auto</option><option>Auto</option><option>Auto</option></select>";
-              document.getElementById(divName).appendChild(newdiv);
-              counter++;
-              
-              var removalLink = document.createElement('a');
-              removalLink.onclick = function(){
-                  this.parentNode.parentNode.removeChild(this.parentNode)
-              }
-              
-              var removalText = document.createTextNode('Remove Field');
-              removalLink.appendChild(removalText);
-           	li.appendChild(removalLink);
-           	count++
-         }
-    }
-    </script>
-    
-    <script type="text/javascript">
-    count = 0;
-    createinput =function (){
-        field_area = document.getElementById('fields')
-    	var li = document.createElement("li");
-        var input = document.createElement("select");
-        input.id = 'field'+count;
-        input.name = 'field'+count;
-        input.type = "text"; //Type of field - can be any valid input type like text,file,checkbox etc.
-        li.appendChild(input);
-        field_area.appendChild(li);
-        
-        //create the removal link
-        var removalLink = document.createElement('a');
-        removalLink.onclick = function(){
-            this.parentNode.parentNode.removeChild(this.parentNode)
-        }
-        
-        var removalText = document.createTextNode('Remove Field');
-        removalLink.appendChild(removalText);
-     	li.appendChild(removalLink);
-     	count++
-    }
-    </script>
-    <script type="text/javascript">
-    	
     </script>
 </body>
 </html>
