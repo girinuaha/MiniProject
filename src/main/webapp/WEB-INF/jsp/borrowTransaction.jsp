@@ -136,7 +136,7 @@
 					</div>
 				</div>
 			</div>
-            <%-- <div class="col-md-12 top-20 padding-0">
+            <div class="col-md-12 top-20 padding-0">
             	<div class="col-md-12">
                   <div class="panel">
                     <div class="panel-body">
@@ -160,8 +160,6 @@
 							    	<select class="form-control employee" name="employee.id">
 							    		<c:forEach var="employee" items="${employees }">
 							    			<option value="${employee.id }">${employee.name }</option>
-								    		<input type="hidden" class="form-control" name="employee.id" value="${employees.id }">
-								    		<input type="text" class="form-control" value="${employees.name }">
 								    	</c:forEach>
 							    	</select>
 							  	</div>
@@ -182,7 +180,7 @@
                     </div>
                   </div>
                 </div>  
-            </div> --%>
+            </div>
             <div class="col-md-12 top-20 padding-0">
             	<div class="col-md-12">
                   <div class="panel">
@@ -228,7 +226,7 @@
         	weekStart : 0, 
 	       	time: false,
 	       	maxDate : new Date(),
-	       	format : 'DD/MM/YYYY',
+	       	format : 'MM/DD/YYYY',
         });
         
         $(".customer").select2({

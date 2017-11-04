@@ -25,4 +25,22 @@ public class RentHistoryDaoImpl implements RentHistoryDao {
 		}
 		return rentHistory;
 	}
+
+	public RentHistory getHistoryById(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		RentHistory rentHistory = session.get(RentHistory.class, id);
+		return rentHistory;
+	}
+
+	public void save(RentHistory rentHistory) {
+		Session session = sessionFactory.getCurrentSession();
+		session.save(rentHistory);
+		session.flush();
+	}
+
+	public void update(RentHistory rentHistory) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(rentHistory);
+		session.flush();
+	}
 }

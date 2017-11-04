@@ -1,7 +1,5 @@
 package com.xsis.project.dao;
 
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,25 +14,8 @@ public class ReturnTransactionDaoImpl implements ReturnTransactionDao{
 	SessionFactory sessionFactory;
 	
 	public void save(ReturnTransaction returnTransaction) {
-		// TODO Auto-generated method stub
-		
 		Session session = sessionFactory.getCurrentSession();
 		session.save(returnTransaction);
 		session.flush();
 	}
-
-	public List<ReturnTransaction> getAllReturnTransactions() {
-		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
-		
-		// HQL (hibernate query language)
-		String myHql = "from ReturnTransaction";
-		List<ReturnTransaction> returnTransactions = session.createQuery(myHql).list();
-		if(returnTransactions.isEmpty()){
-			return null;
-		}
-		
-		return returnTransactions;
-	}
-
 }

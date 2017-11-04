@@ -156,17 +156,15 @@
 							</tr>
 	                      </thead>
 	                      <tbody>
-	                        <c:forEach var="rentHistories" items="${rentHistories }">
+	                        <c:forEach var="rentHistory" items="${rentHistories }">
 								<tr>
-									<td>${rentHistories.borrowTransaction.customer.name }</td>
-									<td>${rentHistories.borrowTransaction.borrowDate }</td>
-									<td>${rentHistories.dueDate }</td>
-									<td>${rentHistories.returnTransaction.returnDate }</td>
-									<td>${rentHistories.fine }</td>
+									<td>${rentHistory.borrowTransaction.customer.name }</td>
+									<td>${rentHistory.borrowTransaction.borrowDate }</td>
+									<td>${rentHistory.dueDate }</td>
+									<td>${rentHistory.returnTransaction.returnDate }</td>
+									<td>${rentHistory.fine }</td>
 									<td>
-										<button class="btn btn-success btn-sm detail-btn icon-box" data-id="${book.id}" title="Detail"><span class="icons icon-eye"></span></button>&nbsp;
-										<button class="btn btn-warning btn-sm update-btn icon-box" data-id="${book.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
-										<button class="btn btn-danger btn-sm delete-btn icon-box" data-id="${book.id}" title="Delete"><span class="icons icon-trash"></span></button>
+										<button class="btn btn-warning btn-sm update-btn icon-box" data-id="${rentHistory.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
 									</td>
 								</tr>
 							</c:forEach>
@@ -206,37 +204,6 @@
 		
 		var id = 0;
 		
-		//detail
-		$(document).ready(function (){
-			$('.detail-btn').on('click',function() {
-				
-				id = $(this).data('id');
-				
-				//ajax retrive data
-				$.ajax({
-					type: 'POST',
-					url: '/book/edit/'+id,
-					success: function(data) {		
-						setField(data);
-					},
-					dataType: 'json'
-				});
-				
-				$('#detail-modal').modal();
-			});
-			
-			function setField(data) {
-				$('#detail-isbn').val(data.isbn);
-				$('#detail-title').val(data.title);
-				$('#detail-author').val(data.author);
-				$('#detail-releasedYear').val(data.releasedYear);
-				$('#detail-publisher').val(data.publisher.name);
-				$('#detail-bookStock').val(data.bookStock.stock);
-				$('#detail-category').val(data.shelf.category);
-			}
-		});
-		
-		
 		//update
 		$(document).ready(function (){
 			$('.update-btn').on('click',function() {
@@ -246,7 +213,7 @@
 				//ajax retrive data
 				$.ajax({
 					type: 'POST',
-					url: '/book/edit/'+id,
+					url: '/rent_history/edit/'+id,
 					success: function(data) {		
 						setField(data);
 					},
@@ -256,130 +223,67 @@
 				$('#update-modal').modal();
 			});
 			
+			var date = new Date();
+
+			var day = date.getDate();
+			var month = date.getMonth() + 1;
+			var year = date.getFullYear();
+
+			if (month < 10) month = "0" + month;
+			if (day < 10) day = "0" + day;
+
+			var today = year + "-" + month + "-" + day;
+			
 			function setField(data) {
-				$('#isbn').val(data.isbn);
-				$('#title').val(data.title);
-				$('#author').val(data.author);
-				$('#releasedYear').val(data.releasedYear);
-				$('#publisher').val(data.publisher.id);
-				$('#bookStockId').val(data.bookStock.id);
-				$('#bookStock').val(data.bookStock.stock);
-				$('#category').val(data.shelf.id);
+				
+				var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+				var firstDate = new Date(data.dueDate);
+				var secondDate = new Date(today);
+				var diffDays = Math.round(Math.abs(((firstDate.getTime() - secondDate.getTime())/(oneDay))*5000));
+				
+				$('#borrowId').val(data.borrowTransaction.id);
+				$('#customerId').val(data.borrowTransaction.customer.id);
+				$('#customer').val(data.borrowTransaction.customer.name);
+				$('#borrowDate').val(data.borrowTransaction.borrowDate);
+				$('#employeeBorrowId').val(data.borrowTransaction.employee.id);
+				$('#employeeBorrow').val(data.borrowTransaction.employee.name);
+				$('#dueDate').val(data.dueDate);
+				$('#returnDate').val(today);
+				$('#fine').val(diffDays);
 			}
 			
 			//submit update
 			$('#submit-update').click(function(){
-				var Book = {
+				var returnTransaction = {
+					
 					id : id,
-					isbn : $('#isbn').val(),
-					title : $('#title').val(),
-					author : $('#author').val(),
-					releasedYear : $('#releasedYear').val(),
-					publisher : {
-						id : $('#publisher').val()
+					fine : $('#fine').val(),
+					dueDate : $('#dueDate').val(),
+					borrowTransaction : {
+						id : $('#borrowId').val(),
 					},
-					bookStock : {
-						id : $('#bookStockId').val(),
-						stock : $('#bookStock').val()
-					},
-					shelf : {
-						id : $('#category').val()
+					returnTransaction : {
+						returnDate : $('#returnDate').val(),
+						employee : {
+							id : $('#employeeReturn').val()
+						}
 					}
+					
 				};
 				
 				// ajax update
 				$.ajax({
 					type: 'PUT',
-					url: '/book/update',
+					url: '/rent_history/update',
 					contentType: "application/json",
-					data : JSON.stringify(Book),
-					success: function(data) {		
-						window.location = "/book";
-					}
-				});
-			});
-		});
-		
-		//delete
-		$(document).ready(function (){
-			
-			$('.delete-btn').on('click',function() {
-				
-				id = $(this).data('id');
-				$('#delete-modal').modal(id);
-			});
-			
-			$('#ok-delete').click(function(){
-				
-				$.ajax({
-					type: 'DELETE',
-					url: '/book/delete/'+id,
-					success: function(data) {		
-						window.location = "/book";
+					data : JSON.stringify(returnTransaction),
+					success: function(data) {
+						window.location = "/rent_history";
 					}
 				});
 			});
 		});
 	</script>
-	
-	<!-- Detail Update -->
-	<div class="col-md-12">
-		<div class="modal fade"  id="detail-modal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title">Book Detail</h4>
-		        </div>
-		        <div class="modal-body">
-		        	<form style="margin-top: 3%;">
-						<div class="form-row">
-						    <div class="form-group col-md-6">
-							    <label>ISBN</label>
-							    <input type="text" class="form-control" id="detail-isbn" disabled>
-							</div>
-							<div class="form-group col-md-6">
-						    	<label>Author</label>
-						    	<input type="text" class="form-control" id="detail-author" disabled>
-						  	</div>
-							<div class="form-group" style="margin-left:2.5%; margin-right: 2.5%;">
-						    	<label>Title</label>
-						    	<input class="form-control" type="text" id="detail-title" disabled>
-							</div>
-						  	<div class="form-group col-md-6">
-						    	<label>Released Year</label>
-						    	<input type="text" class="form-control" id="detail-releasedYear" disabled>
-						  	</div>
-						  	<div class="form-group col-md-6">
-						    	<label>Publisher</label>
-						    	<input class="form-control" id="detail-publisher" disabled>
-						    	<%-- <select class="form-control" id="detail-publisher" disabled>
-						    		<c:forEach var="publisher" items="${publishers }">
-						    			<option value="${publisher.id }" label="${publisher.name }"/>
-						    		</c:forEach>
-						    	</select> --%>
-						  	</div>
-						  	<div class="form-group col-md-6">
-						    	<label>Category</label>
-						    	<input class="form-control" id="detail-category" disabled>
-						    	<%-- <select class="form-control" id="detail-category" disabled>
-						    		<c:forEach var="shelf" items="${shelfs }">
-						    			<option value="${shelf.id }" label="${shelf.category }"/>
-						    		</c:forEach>
-						    	</select> --%>
-						  	</div>
-						  	<div class="form-group col-md-6">
-						    	<label>Stock</label>
-						    	<input type="text" class="form-control" id="detail-bookStock" disabled>
-						  	</div>
-						  	<label> </label>
-						</div>
-					</form>
-		        </div>
-	        </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-   	</div>
 	
 	<!-- Modal Update -->
 	<div class="col-md-12">
@@ -388,48 +292,46 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title">Update Book</h4>
+			        <h4 class="modal-title">Return Book</h4>
 		        </div>
 		        <div class="modal-body">
 		        	<form style="margin-top: 3%;">
 						<div class="form-row">
+							<input type="hidden" class="form-control" name="borrowId" id="borrowId">
 						    <div class="form-group col-md-6">
-							    <label>ISBN</label>
-							    <input type="text" class="form-control" name="isbn" id="isbn">
+							    <label>Customer</label>
+							    <input type="hidden" class="form-control" name="customerId" id="customerId">
+							    <input type="text" class="form-control" name="customer" id="customer">
 							</div>
 							<div class="form-group col-md-6">
-						    	<label>Author</label>
-						    	<input type="text" class="form-control" name="author" id="author">
+						    	<label>Borrow Date</label>
+						    	<input type="text" class="form-control" name="borrowDate" id="borrowDate">
 						  	</div>
-							<div class="form-group" style="margin-left:2.5%; margin-right: 2.5%;">
-						    	<label>Title</label>
-						    	<input class="form-control" type="text" name="title" id="title"></td>
+							<div class="form-group col-md-6">
+						    	<label>Employee On Duty</label>
+						    	<input class="form-control" type="hidden" name="employeeBorrowId" id="employeeBorrowId">
+						    	<input class="form-control" type="text" name="employeeBorrow" id="employeeBorrow">
 							</div>
 						  	<div class="form-group col-md-6">
-						    	<label>Released Year</label>
-						    	<input type="text" class="form-control" name="releasedYear" id="releasedYear">
+						    	<label>Due Date</label>
+						    	<input type="text" class="form-control" name="dueDate" id="dueDate">
 						  	</div>
 						  	<div class="form-group col-md-6">
-						    	<label>Publisher</label>
-						    	<select class="form-control" name="publisher" id="publisher">
-						    		<c:forEach var="publisher" items="${publishers }">
-						    			<option value="${publisher.id }" label="${publisher.name }"/>
-						    		</c:forEach>
-						    	</select>
+						    	<label>Return Date</label>
+						    	<input type="text" class="form-control" name="returnDate" id="returnDate">
 						  	</div>
 						  	<div class="form-group col-md-6">
-						    	<label>Category</label>
-						    	<select class="form-control" name="category" id="category">
-						    		<c:forEach var="shelf" items="${shelfs }">
-						    			<option value="${shelf.id }" label="${shelf.category }"/>
-						    		</c:forEach>
-						    	</select>
+						    	<label>Fine</label>
+						    	<input type="text" class="form-control" name="fine" id="fine">
 						  	</div>
 						  	<div class="form-group col-md-6">
-						    	<label>Stock</label>
-						    	<input type="hidden" class="form-control" name="bookStockId" id="bookStockId">
-						    	<input type="text" class="form-control" name="bookStock" id="bookStock">
-						  	</div>
+							    <label>Employee</label>
+							    <select class="form-control" name="employeeReturn" id="employeeReturn">
+							    	<c:forEach var="employee" items="${employees }">
+							    		<option value="${employee.id }">${employee.name }</option>
+								    </c:forEach>
+							    </select>
+							</div>
 						  	<label> </label>
 						</div>
 					</form>
@@ -437,27 +339,6 @@
 		        <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 	        		<button type="button" class="btn btn-primary" id="submit-update">Save changes</button>
-		        </div>
-	        </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-   	</div>
-	
-	<!-- Modal Delete -->
-	<div class="col-md-12">
-		<div class="modal fade"  id="delete-modal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title">Delete Book</h4>
-		        </div>
-		        <div class="modal-body">
-		        	<h4>Are you sure?</h4>
-		        </div>
-		        <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-	        		<button type="button" class="btn btn-primary" id="ok-delete">Yes</button>
 		        </div>
 	        </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
