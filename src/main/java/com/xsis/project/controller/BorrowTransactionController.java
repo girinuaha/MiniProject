@@ -42,7 +42,7 @@ public class BorrowTransactionController {
 		
 		List<Book> books = bookService.getAllBook();
 		model.addAttribute("books", books);
-		return "borrowTransaction";
+		return "borrow-transaction";
 	}
 	
 	@RequestMapping(value="/save")
