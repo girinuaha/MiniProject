@@ -187,7 +187,7 @@
 								<th>Email</th>
 								<th>Phone Number</th>
 								<th>Birth Date</th>
-								<th style="width: 15%;">Action</th>
+								<th style="width: 14%;">Action</th>
 							</tr>
 	                      </thead>
 	                      <tbody>
@@ -199,8 +199,8 @@
 									<td>${employee.phoneNumber }</td>
 									<td>${employee.birthDate }</td>
 									<td>
-										<button class="btn btn-warning btn-sm update-btn icon-box" data-id="${employee.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
-										<button class="btn btn-danger btn-sm delete-btn icon-box" data-id="${employee.id}" title="Delete"><span class="icons icon-trash"></span></button>
+										<button class="btn btn-warning btn-xs update-btn icon-box" data-id="${employee.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
+										<button class="btn btn-danger btn-xs delete-btn icon-box" data-id="${employee.id}" title="Delete"><span class="icons icon-trash"></span></button>
 									</td>
 								</tr>
 							</c:forEach>

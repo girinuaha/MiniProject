@@ -205,9 +205,9 @@
 									<td>${book.publisher.name }</td>
 									<td>${book.shelf.category }</td>
 									<td>
-										<button class="btn btn-success btn-sm detail-btn icon-box" data-id="${book.id}" title="Detail"><span class="icons icon-eye"></span></button>&nbsp;
-										<button class="btn btn-warning btn-sm update-btn icon-box" data-id="${book.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
-										<button class="btn btn-danger btn-sm delete-btn icon-box" data-id="${book.id}" title="Delete"><span class="icons icon-trash"></span></button>
+										<button class="btn btn-success btn-xs detail-btn icon-box" data-id="${book.id}" title="Detail"><span class="icons icon-eye"></span></button>&nbsp;
+										<button class="btn btn-warning btn-xs update-btn icon-box" data-id="${book.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
+										<button class="btn btn-danger btn-xs delete-btn icon-box" data-id="${book.id}" title="Delete"><span class="icons icon-trash"></span></button>
 									</td>
 								</tr>
 							</c:forEach>
