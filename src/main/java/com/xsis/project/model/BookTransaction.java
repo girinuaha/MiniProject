@@ -21,20 +21,20 @@ public class BookTransaction {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	@OneToOne(mappedBy="book")
-	private BorrowTransaction borrow;
+	@OneToOne(mappedBy="bookTransaction")
+	private BorrowTransaction borrowTransaction;
 	@OneToMany(mappedBy="bookTransaction")
 	private List<Book> book;
 	
 	public BookTransaction() { }
-
-	public BookTransaction(int id, BorrowTransaction borrow, List<Book> book) {
+	
+	public BookTransaction(int id, BorrowTransaction borrowTransaction, List<Book> book) {
 		super();
 		this.id = id;
-		this.borrow = borrow;
+		this.borrowTransaction = borrowTransaction;
 		this.book = book;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -43,12 +43,12 @@ public class BookTransaction {
 		this.id = id;
 	}
 
-	public BorrowTransaction getBorrow() {
-		return borrow;
+	public BorrowTransaction getBorrowTransaction() {
+		return borrowTransaction;
 	}
 
-	public void setBorrow(BorrowTransaction borrow) {
-		this.borrow = borrow;
+	public void setBorrowTransaction(BorrowTransaction borrowTransaction) {
+		this.borrowTransaction = borrowTransaction;
 	}
 
 	public List<Book> getBook() {

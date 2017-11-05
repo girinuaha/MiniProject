@@ -26,8 +26,8 @@ public class PublisherController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(Model model) {
-		List<Publisher> publisher = publisherService.getAllPublisher();
-		model.addAttribute("publisher", publisher);
+		List<Publisher> publishers = publisherService.getAllPublisher();
+		model.addAttribute("publishers", publishers);
 		return "publisher";
 	}
 	

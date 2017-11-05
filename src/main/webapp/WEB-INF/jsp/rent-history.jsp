@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Library MASA | BOOK</title>
+<title>Library MASA | Rent History</title>
 
   <!-- start: Css -->
   <link rel="stylesheet" type="text/css" href="assets/asset/css/bootstrap.min.css">
@@ -152,7 +152,7 @@
 								<th>Due Date</th>
 								<th>Return Date</th>
 								<th>Fine</th>
-								<th style="width: 20%;">Action</th>
+								<th style="width: 10%;">Action</th>
 							</tr>
 	                      </thead>
 	                      <tbody>
@@ -163,7 +163,7 @@
 									<td>${rentHistory.dueDate }</td>
 									<td>${rentHistory.returnTransaction.returnDate }</td>
 									<td>${rentHistory.fine }</td>
-									<td>
+									<td style="text-align: center;">
 										<button class="btn btn-warning btn-sm update-btn icon-box" data-id="${rentHistory.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
 									</td>
 								</tr>

@@ -1,128 +1,261 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Library MASA Shelf Entry</title>
-<link rel="stylesheet"
-	href="/assets/bootstrap-4.0.0-beta.2/dist/css/bootstrap.min.css" />
+<title>Library MASA | Shelf</title>
+
+  <!-- start: Css -->
+  <link rel="stylesheet" type="text/css" href="assets/asset/css/bootstrap.min.css">
+
+  <!-- plugins -->
+  <link rel="stylesheet" type="text/css" href="assets/asset/css/plugins/font-awesome.min.css"/>
+  <link rel="stylesheet" type="text/css" href="assets/asset/css/plugins/simple-line-icons.css"/>
+  <link rel="stylesheet" type="text/css" href="assets/asset/css/plugins/datatables.bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="assets/asset/css/plugins/animate.min.css"/>
+  <link href="assets/asset/css/style.css" rel="stylesheet">
+  <!-- end: Css -->
+
+  <link rel="shortcut icon" href="assets/asset/img/logomi.png">
 </head>
-<body>
-	<div class="container" id="container">
-		<%
-			/* List<Shelf> shelfs = //(List)request.getAttribute("shelfs");		
-			for(Shelf shelf: shelfs){
-				out.println("name : "+ shelf.getName());
-			} */
-		%>
-		<table class="table table-sm table-striped table-bordered table-hover">
-			<thead class="thead-dark">
-				<tr>
-					<th>Category</th>
-					<th>Sub-category</th>
-					<th>Section</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="shelf" items="${shelfs }">
-					<tr>
-						<td>${shelf.category }</td>
-						<td>${shelf.subcategory }</td>
-						<td>${shelf.section }</td>
-						<td><a data-id="${shelf.id }"
-							class="btn btn-outline-danger delete-btn">Delete</a> <a
-							id="${shelf.id }" class="btn btn-outline-warning update-btn">Update</a></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
 
-		<form action="shelf/save" method="POST">
-			<h2>Shelf Entry</h2>
-			<div class="form-group row">
-				<label class="control-label col-sm-2" for="category">Category :</label>
-				<div class="col-sm-3">
-					<input type="text" class="form-control" id="category" placeholder=" "
-						name="category">
+<body id="mimin" class="dashboard">
+	<!-- start: Header -->
+	<nav class="navbar navbar-default header navbar-fixed-top">
+		<div class="col-md-12 nav-wrapper">
+			<div class="navbar-header" style="width: 100%;">
+				<div class="opener-left-menu is-open">
+					<span class="top"></span> <span class="middle"></span> <span
+						class="bottom"></span>
 				</div>
-			</div>
-			<div class="form-group row">
-				<label class="control-label col-sm-2" for="subcategory">Sub-category :</label>
-				<div class="col-sm-3">
-					<input type="text" class="form-control" id="subcategory" placeholder=" "
-						name="subcategory">
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="control-label col-sm-2" for="section">Section
-					:</label>
-				<div class="col-sm-3">
-					<input type="text" class="form-control" id="section"
-						placeholder=" " name="section">
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default" name="submit"
-						value="save">Submit</button>
-				</div>
-			</div>
-		</form>
-	</div>
+				<a href="index.html" class="navbar-brand"> <b>MASA</b>
+				</a>
 
-	<script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-		integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-		crossorigin="anonymous"></script>
-	<script type="text/javascript"
-		src="/assets/bootstrap-4.0.0-beta.2/dist/js/bootstrap.min.js"></script>
+				<ul class="nav navbar-nav search-nav">
+					<li>
+						<div class="search">
+							<span class="fa fa-search icon-search" style="font-size: 23px;"></span>
+							<div class="form-group form-animate-text">
+								<input type="text" class="form-text" required> <span
+									class="bar"></span> <label class="label-search">Type
+									anywhere to <b>Search</b>
+								</label>
+							</div>
+						</div>
+					</li>
+				</ul>
 
+				<ul class="nav navbar-nav navbar-right user-nav"
+					style="margin-right: 5px;">
+					<li class="user-name"><span>Akihiko Avaron</span></li>
+					<li class="dropdown avatar-dropdown"><img
+						src="assets/asset/img/avatar.jpg" class="img-circle avatar"
+						alt="user name" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="true" />
+						<ul class="dropdown-menu user-dropdown">
+							<li><a href="#"><span class="fa fa-user"></span> My
+									Profile</a></li>
+							<li><a href="#"><span class="fa fa-calendar"></span> My
+									Calendar</a></li>
+							<li role="separator" class="divider"></li>
+							<li class="more">
+								<ul style="float: right;">
+									<li><a href=""><span class="fa fa-power-off "></span></a></li>
+								</ul>
+							</li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- end: Header -->
+	
+	<div class="container-fluid mimin-wrapper">
+		<!-- start:Left Menu -->
+		<div id="left-menu">
+			<div class="sub-left-menu scroll">
+                <ul class="nav nav-list">
+                	<li><div class="left-bg"></div></li>
+                    <li class="time">
+                      <h1 class="animated fadeInLeft">21:00</h1>
+                      <p class="animated fadeInRight">Sat,October 1st 2029</p>
+                    </li>
+                    <li class="ripple animated fadeInLeft">
+                    	<a class="nav-header" href="book">
+                    		<span class="fa fa-book"></span> Books  
+                    		<span class="fa-angle-right fa right-arrow text-right"></span>
+                    	</a>
+                    </li>
+                    <li class="ripple animated fadeInRight">
+                    	<a class="tree-toggle nav-header">
+                    		<span class="fa fa-money"></span> Rent History 
+                    		<span class="fa-angle-right fa right-arrow text-right"></span>
+                    	</a>
+                    	<ul class="nav nav-list tree">
+	                        <li><a href="rent_history">Book Rent List</a></li>
+	                        <li><a href="borrow_transaction">Borrow Book</a></li>
+                      	</ul>
+                    </li>
+                    <li class="ripple animated fadeInLeft">
+                    	<a class="nav-header" href="customer">
+                    		<span class="fa fa-users"></span> Customer  <span class="fa-angle-right fa right-arrow text-right"></span>
+                    	</a>
+                    </li>
+                    <li class="ripple animated fadeInRight">
+                    	<a class="nav-header" href="employee">
+                    		<span class="fa fa-user"></span> Employee  <span class="fa-angle-right fa right-arrow text-right"></span>
+                    	</a>
+                    </li>
+                    <li class="active ripple animated fadeInLeft">
+                    	<a class="nav-header" href="shelf">
+                    		<span class="fa fa-archive"></span> Shelf  <span class="fa-angle-right fa right-arrow text-right"></span>
+                    	</a>
+                    </li>
+                    <li class="ripple animated fadeInRight">
+                    	<a class="nav-header" href="publisher">
+                    		<span class="fa fa-newspaper-o"></span> Publisher  <span class="fa-angle-right fa right-arrow text-right"></span>
+                    	</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- end: Left Menu -->
+		<!-- start: Content -->
+		<div id="content">
+			<div class="panel box-shadow-none content-header">
+				<div class="panel-body">
+					<div class="col-md-12">
+						<h3 class="animated fadeInLeft">Shelf</h3>
+						<p class="animated fadeInDown">
+							Shelf <span class="fa-angle-right fa"></span> List
+						</p>
+					</div>
+				</div>
+			</div>
+            <div class="col-md-12 top-20 padding-0">
+            	<div class="col-md-12">
+                  <div class="panel">
+                    <div class="panel-body">
+                      <div class="responsive-table">
+                      
+                      <button class="btn btn-success tree-toggle icon-box"><span class="fa fa-plus"/> Add Shelf</button><br><br>
+                      <ul class="nav nav-list tree">
+						<form action="shelf/save" method="post" class="form-horizontal">
+						    <div class="form-group">
+						        <label class="col-md-1 control-label">Shelf</label>
+						        <div class="col-xs-4">
+						            <input type="text" class="form-control" name="category" placeholder="Category" />
+						        </div>
+						        <div class="col-xs-4">
+						            <input type="text" class="form-control" name="subCategory" placeholder="Sub-category" />
+						        </div>
+						        <div class="col-xs-3">
+						            <input type="text" class="form-control" name="section" placeholder="Section" />
+						        </div>
+						    </div>
+						    <div class="form-group">
+						        <div class="col-xs-5 col-xs-offset-1">
+						            <button type="submit" class="btn btn-primary">Submit</button><br><br>
+						        </div>
+						    </div>
+						</form>
+                      </ul>
+                      
+                      <table id="shelf-list" class="table table-striped table-bordered" width="100%" cellspacing="0">
+	                      <thead>
+	                        <tr>
+								<th>Category</th>
+								<th>Sub-category</th>
+								<th>Section</th>
+								<th style="width: 18%;">Action</th>
+							</tr>
+	                      </thead>
+	                      <tbody>
+	                        <c:forEach var="shelf" items="${shelfs }">
+								<tr>
+									<td>${shelf.category }</td>
+									<td>${shelf.subCategory }</td>
+									<td>${shelf.section }</td>
+									<td style="text-align: center;">
+										<button class="btn btn-warning btn-xs update-btn icon-box" data-id="${shelf.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
+										<button class="btn btn-danger btn-xs delete-btn icon-box" data-id="${shelf.id}" title="Delete"><span class="icons icon-trash"></span></button>
+									</td>
+								</tr>
+							</c:forEach>
+	                      </tbody>
+                      </table>
+                      </div>
+                  </div>
+                </div>
+              </div>  
+            </div>
+          </div>
+          <!-- end: content -->         
+      </div>
+
+	<!-- start: Javascript -->
+	<script src="assets/asset/js/jquery.min.js"></script>
+	<script src="assets/asset/js/jquery.ui.min.js"></script>
+	<script src="assets/asset/js/popper.min.js"></script>
+	<script src="assets/asset/js/bootstrap.min.js"></script>
+	
+	<!-- plugins -->
+	<script src="assets/asset/js/plugins/moment.min.js"></script>
+	<script src="assets/asset/js/plugins/jquery.datatables.min.js"></script>
+	<script src="assets/asset/js/plugins/datatables.bootstrap.min.js"></script>
+	<script src="assets/asset/js/plugins/jquery.nicescroll.js"></script>
+	
+	<!-- custom -->
+	<script src="assets/asset/js/main.js"></script>
 	<script type="text/javascript">
+	  $(document).ready(function(){
+	    $('#shelf-list').DataTable();
+	  });
+	</script>
+	<!-- end: Javascript -->
+	
+	<script type="text/javascript">
+		
 		var id = 0;
-		$(document).ready(function() {
-
-			$('.update-btn').on('click', function() {
-
-				//ambil data dari server => ajax
-				id = $(this).attr('id');
-
+		
+		//update
+		$(document).ready(function (){
+			$('.update-btn').on('click',function() {
+				
+				id = $(this).data('id');
+				
+				//ajax retrive data
 				$.ajax({
-					type : 'POST',
-					url : 'shelf/edit/' + id,
-					success : function(data) {
-						console.log(JSON.stringify(data));
-						_setFieldUpdateModal(data);
+					type: 'POST',
+					url: '/shelf/edit/'+id,
+					success: function(data) {		
+						setField(data);
 					},
-					dataType : 'json'
+					dataType: 'json'
 				});
-
-				$('#updateModal').modal();
+				
+				$('#update-modal').modal();
 			});
-
-			function _setFieldUpdateModal(data) {
+			
+			function setField(data) {
 				$('#modcategory').val(data.category);
-				$('#modsubcategory').val(data.subcategory);
+				$('#modsubcategory').val(data.subCategory);
 				$('#modsection').val(data.section);
 
 			}
-
-			//event submit data for update
-			$('#submit-update').click(function() {
-
-				//Object ala js
+			
+			//submit update
+			$('#submit-update').click(function(){
 				var Shelf = {
-					id : id,
-					category : $('#modcategory').val(),
-					subcategory : $('#modsubcategory').val(),
-					section : $('#modsection').val(),
-				};
-
-				//ajax update
+						id : id,
+						category : $('#modcategory').val(),
+						subCategory : $('#modsubcategory').val(),
+						section : $('#modsection').val(),
+					};
+				
+				// ajax update
 				$.ajax({
 					type : 'PUT',
 					url : 'shelf/update',
@@ -134,17 +267,17 @@
 				});
 			});
 		});
-
+		
 		//delete
-		$(document).ready(function() {
-
-			$('.delete-btn').on('click', function() {
-
+		$(document).ready(function (){
+			
+			$('.delete-btn').on('click',function() {
+				
 				id = $(this).data('id');
-				$('#deleteModal').modal(id);
+				$('#delete-modal').modal(id);
 			});
-
-			$('#submit-delete').click(function() {
+			
+			$('#ok-delete').click(function() {
 
 				$.ajax({
 					type : 'DELETE',
@@ -156,21 +289,18 @@
 			});
 		});
 	</script>
-
-	<div class="modal fade" id="updateModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+	
+	<!-- Modal Update -->
+	<div class="col-md-12">
+		<div class="modal fade"  id="update-modal">
+		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Update
-						Confirmation</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title">Update Shelf</h4>
+		        </div>
+		        <div class="modal-body">
+		        	<form>
 						<div class="form-group">
 							<label for="modcategory">Category</label> <input type="text"
 								class="form-control" id="modcategory" name="modcategory" placeholder=" ">
@@ -187,36 +317,35 @@
 								placeholder=" ">
 						</div>
 					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" id="submit-update">Update</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+		        </div>
+		        <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        		<button type="button" class="btn btn-primary" id="submit-update">Save changes</button>
+		        </div>
+	        </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+   	</div>
+	
+	<!-- Modal Delete -->
+	<div class="col-md-12">
+		<div class="modal fade"  id="delete-modal">
+		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Delete
-						Confirmation</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">Are you sure?</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Cancel</button>
-					<button type="button" class="btn btn-primary" id="submit-delete">Delete</button>
-				</div>
-			</div>
-		</div>
-	</div>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title">Delete Shelf</h4>
+		        </div>
+		        <div class="modal-body">
+		        	<h4>Are you sure?</h4>
+		        </div>
+		        <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+	        		<button type="button" class="btn btn-primary" id="ok-delete">Yes</button>
+		        </div>
+	        </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+   	</div>
 </body>
 </html>

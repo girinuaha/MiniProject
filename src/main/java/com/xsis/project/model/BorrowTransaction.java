@@ -30,7 +30,7 @@ public class BorrowTransaction {
 	private Date borrowDate;
 	@OneToOne
 	@JoinColumn(name="book_transaction_id")
-	private BookTransaction book;
+	private BookTransaction bookTransaction;
 	@ManyToOne
 	private Employee employee;
 	@OneToOne(mappedBy="borrowTransaction")
@@ -40,12 +40,12 @@ public class BorrowTransaction {
 	
 	public BorrowTransaction() { }
 	
-	public BorrowTransaction(int id, Date borrowDate, BookTransaction book, Employee employee, RentHistory rentHistory,
-			Customer customer) {
+	public BorrowTransaction(int id, Date borrowDate, BookTransaction bookTransaction, Employee employee,
+			RentHistory rentHistory, Customer customer) {
 		super();
 		this.id = id;
 		this.borrowDate = borrowDate;
-		this.book = book;
+		this.bookTransaction = bookTransaction;
 		this.employee = employee;
 		this.rentHistory = rentHistory;
 		this.customer = customer;
@@ -67,12 +67,12 @@ public class BorrowTransaction {
 		this.borrowDate = borrowDate;
 	}
 
-	public BookTransaction getBook() {
-		return book;
+	public BookTransaction getBookTransaction() {
+		return bookTransaction;
 	}
 
-	public void setBook(BookTransaction book) {
-		this.book = book;
+	public void setBookTransaction(BookTransaction bookTransaction) {
+		this.bookTransaction = bookTransaction;
 	}
 
 	public Employee getEmployee() {

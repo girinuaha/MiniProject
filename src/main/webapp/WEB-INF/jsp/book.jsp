@@ -204,7 +204,7 @@
 									<td>${book.author }</td>
 									<td>${book.publisher.name }</td>
 									<td>${book.shelf.category }</td>
-									<td>
+									<td style="text-align: center;">
 										<button class="btn btn-success btn-xs detail-btn icon-box" data-id="${book.id}" title="Detail"><span class="icons icon-eye"></span></button>&nbsp;
 										<button class="btn btn-warning btn-xs update-btn icon-box" data-id="${book.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
 										<button class="btn btn-danger btn-xs delete-btn icon-box" data-id="${book.id}" title="Delete"><span class="icons icon-trash"></span></button>

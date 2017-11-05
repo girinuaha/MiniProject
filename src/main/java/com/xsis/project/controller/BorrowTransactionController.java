@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.xsis.project.model.Book;
 import com.xsis.project.model.BorrowTransaction;
@@ -46,8 +47,9 @@ public class BorrowTransactionController {
 	}
 	
 	@RequestMapping(value="/save")
-	public String save(@ModelAttribute BorrowTransaction borrowTransaction) {
-		borrowTransactionService.save(borrowTransaction);
-		return "redirect:/rent_history";
+	@ResponseBody
+	public BorrowTransaction save(@ModelAttribute BorrowTransaction borrowTransaction) {
+		//borrowTransactionService.save(borrowTransaction);
+		return borrowTransaction;
 	}
 }

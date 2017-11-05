@@ -198,7 +198,7 @@
 									<td>${customer.email }</td>
 									<td>${customer.phoneNumber }</td>
 									<td>${customer.birthDate }</td>
-									<td>
+									<td style="text-align: center;">
 										<button class="btn btn-warning btn-xs update-btn icon-box" data-id="${customer.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
 										<button class="btn btn-danger btn-xs delete-btn icon-box" data-id="${customer.id}" title="Delete"><span class="icons icon-trash"></span></button>
 									</td>

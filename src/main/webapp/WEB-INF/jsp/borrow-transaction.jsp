@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Library MASA | Rent History</title>
+<title>Library MASA | Borrow Transaction</title>
 
   <!-- start: Css -->
   <link rel="stylesheet" type="text/css" href="assets/asset/css/bootstrap.min.css">
@@ -157,7 +157,7 @@
 								</div>
 							  	<div class="form-group col-md-6">
 							    	<label>Employee</label>
-							    	<select class="form-control employee" name="employee.id">
+							    	<select class="form-control employee" name="employee.id" style="width: 100%;">
 							    	<option></option>
 							    		<c:forEach var="employee" items="${employees }">
 							    			<option value="${employee.id }">${employee.name }</option>
@@ -167,7 +167,7 @@
 							  	<div class="form-group">
 								  	<div class="col-md-11 book">
 								  		<label>Book</label>
-									    <select class="form-control bookTransaction" name="bookTransaction[0].id" style="width: 100%;">
+									    <select class="form-control bookTransaction" name="bookTransaction.book[0].id" style="width: 100%;">
 									    	<option></option>
 								    		<c:forEach var="book" items="${books }">
 								    			<option value="${book.id }">${book.title }</option>
@@ -181,7 +181,7 @@
 								</div>
 								<div class="form-group hide" id="bookTemplate">
 									<div class="col-md-11 book">
-									    <select class="form-control" name="bookTransaction.id">
+									    <select class="form-control" name="bookTransaction.book.id">
 									    	<option></option>
 								    		<c:forEach var="book" items="${books }">
 								    			<option value="${book.id }">${book.title }</option>
@@ -240,8 +240,8 @@
 	
 	            // Update the name attributes
 	            $clone
-	                .find('[name="bookTransaction.id"]').attr('name', 'bookTransaction[' + bookIndex + '].id').end()
-	                .find('[name="bookTransaction['+bookIndex+'].id"]').select2({
+	                .find('[name="bookTransaction.book.id"]').attr('name', 'bookTransaction.book[' + bookIndex + '].id').end()
+	                .find('[name="bookTransaction.book['+bookIndex+'].id"]').select2({
 	                	placeholder: "Select a book",
 	                    allowClear: true
 	                })
