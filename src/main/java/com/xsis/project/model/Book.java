@@ -1,5 +1,7 @@
 package com.xsis.project.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -32,14 +35,13 @@ public class Book {
 	@OneToOne
 	@JoinColumn(name="book_stock_id")
 	private BookStock bookStock;
-	@ManyToOne
-	@JoinColumn(name="book_transaction_id")
-	private BookTransaction bookTransaction;
+	@OneToMany(mappedBy = "book")
+	private List<BookTransaction> bookTransaction;
 	
 	public Book() { }
-
+	
 	public Book(int id, String isbn, String title, String author, String releasedYear, Publisher publisher, Shelf shelf,
-			BookStock bookStock, BookTransaction bookTransaction) {
+			BookStock bookStock, List<BookTransaction> bookTransaction) {
 		super();
 		this.id = id;
 		this.isbn = isbn;
@@ -116,11 +118,11 @@ public class Book {
 		this.bookStock = bookStock;
 	}
 
-	public BookTransaction getBookTransaction() {
+	public List<BookTransaction> getBookTransaction() {
 		return bookTransaction;
 	}
 
-	public void setBookTransaction(BookTransaction bookTransaction) {
+	public void setBookTransaction(List<BookTransaction> bookTransaction) {
 		this.bookTransaction = bookTransaction;
 	}
 }

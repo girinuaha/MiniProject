@@ -30,8 +30,7 @@ public class BorrowTransactionController {
 	@Autowired
 	EmployeeService employeeService;
 	@Autowired
-	BookService bookService;
-	
+	BookService bookService;	
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(Model model) {
@@ -47,9 +46,8 @@ public class BorrowTransactionController {
 	}
 	
 	@RequestMapping(value="/save")
-	@ResponseBody
-	public BorrowTransaction save(@ModelAttribute BorrowTransaction borrowTransaction) {
-		//borrowTransactionService.save(borrowTransaction);
-		return borrowTransaction;
+	public String save(@ModelAttribute BorrowTransaction borrowTransaction) {
+		borrowTransactionService.save(borrowTransaction);
+		return "redirect:/rent_history";
 	}
 }

@@ -167,7 +167,7 @@
 							  	<div class="form-group">
 								  	<div class="col-md-11 book">
 								  		<label>Book</label>
-									    <select class="form-control bookTransaction" name="bookTransaction.book[0].id" style="width: 100%;">
+									    <select class="form-control bookTransaction" name="bookTransaction[0].book.id" style="width: 100%;">
 									    	<option></option>
 								    		<c:forEach var="book" items="${books }">
 								    			<option value="${book.id }">${book.title }</option>
@@ -240,8 +240,8 @@
 	
 	            // Update the name attributes
 	            $clone
-	                .find('[name="bookTransaction.book.id"]').attr('name', 'bookTransaction.book[' + bookIndex + '].id').end()
-	                .find('[name="bookTransaction.book['+bookIndex+'].id"]').select2({
+	                .find('[name="bookTransaction.book.id"]').attr('name', 'bookTransaction[' + bookIndex + '].book.id').end()
+	                .find('[name="bookTransaction[' + bookIndex + '].book.id"]').select2({
 	                	placeholder: "Select a book",
 	                    allowClear: true
 	                })

@@ -2,13 +2,16 @@ package com.xsis.project.service;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.xsis.project.dao.BookTransactionDao;
 import com.xsis.project.dao.BorrowTransactionDao;
 import com.xsis.project.dao.RentHistoryDao;
+import com.xsis.project.model.BookTransaction;
 import com.xsis.project.model.BorrowTransaction;
 import com.xsis.project.model.RentHistory;
 
@@ -20,9 +23,19 @@ public class BorrowTransactionService {
 	BorrowTransactionDao borrowTransactionDao;
 	@Autowired
 	RentHistoryDao rentHistoryDao;
+	@Autowired
+	BookTransactionDao bookTransactionDao;
 	
 	public void save(BorrowTransaction borrowTransaction) {
+		
 		borrowTransactionDao.save(borrowTransaction);
+
+		List<BookTransaction> bookTransactions = borrowTransaction.getBookTransaction();	
+		
+		for (BookTransaction bookTransaction : bookTransactions) {
+			bookTransaction.setBorrowTransaction(borrowTransaction);
+			bookTransactionDao.save(bookTransaction);
+		}
 		
 		Date dueDate = new Date();
 		Calendar c = Calendar.getInstance(); 

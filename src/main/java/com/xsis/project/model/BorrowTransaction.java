@@ -1,14 +1,15 @@
 package com.xsis.project.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -28,9 +29,8 @@ public class BorrowTransaction {
 	@Temporal(TemporalType.DATE)
 	@Column(name="BORROW_DATE")
 	private Date borrowDate;
-	@OneToOne
-	@JoinColumn(name="book_transaction_id")
-	private BookTransaction bookTransaction;
+	@OneToMany(mappedBy = "borrowTransaction")
+	private List<BookTransaction> bookTransaction;
 	@ManyToOne
 	private Employee employee;
 	@OneToOne(mappedBy="borrowTransaction")
@@ -39,8 +39,8 @@ public class BorrowTransaction {
 	private Customer customer;
 	
 	public BorrowTransaction() { }
-	
-	public BorrowTransaction(int id, Date borrowDate, BookTransaction bookTransaction, Employee employee,
+
+	public BorrowTransaction(int id, Date borrowDate, List<BookTransaction> bookTransaction, Employee employee,
 			RentHistory rentHistory, Customer customer) {
 		super();
 		this.id = id;
@@ -50,6 +50,7 @@ public class BorrowTransaction {
 		this.rentHistory = rentHistory;
 		this.customer = customer;
 	}
+
 
 	public int getId() {
 		return id;
@@ -67,11 +68,11 @@ public class BorrowTransaction {
 		this.borrowDate = borrowDate;
 	}
 
-	public BookTransaction getBookTransaction() {
+	public List<BookTransaction> getBookTransaction() {
 		return bookTransaction;
 	}
 
-	public void setBookTransaction(BookTransaction bookTransaction) {
+	public void setBookTransaction(List<BookTransaction> bookTransaction) {
 		this.bookTransaction = bookTransaction;
 	}
 
