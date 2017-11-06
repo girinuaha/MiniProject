@@ -14,6 +14,7 @@ C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\service\Employ
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\BorrowTransactionDaoImpl.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\controller\ReturnTransactionController.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\ReturnTransactionDao.java
+C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\BookTransactionDao.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\controller\BorrowTransactionController.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\controller\ShelfController.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\service\ShelfService.java
@@ -31,6 +32,7 @@ C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\model\Shelf.ja
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\controller\RentHistoryController.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\BookStockDaoImpl.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\service\BorrowTransactionService.java
+C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\BookTransactionDaoImpl.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\model\BorrowTransaction.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\controller\BookController.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\model\Book.java
