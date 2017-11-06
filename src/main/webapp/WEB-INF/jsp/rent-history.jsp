@@ -152,7 +152,7 @@
 								<th>Due Date</th>
 								<th>Return Date</th>
 								<th>Fine</th>
-								<th style="width: 10%;">Action</th>
+								<th style="width: 15%;">Action</th>
 							</tr>
 	                      </thead>
 	                      <tbody>
@@ -164,7 +164,8 @@
 									<td>${rentHistory.returnTransaction.returnDate }</td>
 									<td>${rentHistory.fine }</td>
 									<td style="text-align: center;">
-										<button class="btn btn-warning btn-sm update-btn icon-box" data-id="${rentHistory.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
+										<button class="btn btn-success btn-xs detail-btn icon-box" data-id="${rentHistory.id}" title="View Books"><span class="icons icon-eye"></span></button>&nbsp;
+										<button class="btn btn-warning btn-xs update-btn icon-box" data-id="${rentHistory.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
 									</td>
 								</tr>
 							</c:forEach>
@@ -287,9 +288,66 @@
 					}
 				});
 			});
+			
+			$('.detail-btn').on('click',function() {
+				
+				id = $(this).data('id');
+				
+				//ajax retrive data
+				$.ajax({
+					type: 'POST',
+					url: '/rent_history/edit/'+id,
+					success: function(data) {
+						console.log(data.borrowTransaction.bookTransaction);
+						//setFieldDetail(data);
+					},
+					dataType: 'json'
+				});
+				
+				$('#detail-modal').modal();
+			});
+			
+			function setFieldDetail(data){
+				for (var i = 0; i < data.borrowTransaction.bookTransaction.length; i++) {
+					$('#book['+i+']').val(data.borrowTransaction.bookTransaction[i].book.title);
+				}
+			}
 		});
 	</script>
 	
+	<!-- Modal View Books -->
+	<div class="col-md-12">
+		<div class="modal fade"  id="detail-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title">List Book</h4>
+		        </div>
+		        <div class="modal-body">
+		        	<form style="margin-top: 3%;">
+						<div class="form-row">
+							<input type="hidden" class="form-control" name="borrowId" id="borrowId">
+						    <div class="form-group col-md-12">
+						   
+						    	<label>Book</label>
+							    <input type="text" class="form-control" id="book[0]">
+							    <input type="text" class="form-control" id="book[1]">
+							    <input type="text" class="form-control" id="book[2]">
+						    
+							</div>
+						  	<label> </label>
+						</div>
+					</form>
+		        </div>
+		        <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        	</div>
+	        </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+   	</div>
+   	
 	<!-- Modal Update -->
 	<div class="col-md-12">
 		<div class="modal fade"  id="update-modal">

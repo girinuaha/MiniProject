@@ -20,6 +20,7 @@ C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\controller\She
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\service\ShelfService.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\BorrowTransactionDao.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\RentHistoryDao.java
+C:\Users\girinuaha\git\MiniProject\src\main\java\com\pastelstudios\json\HibernateAwareObjectMapper.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\controller\CustomerController.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\ReturnTransactionDaoImpl.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\model\Customer.java
@@ -33,6 +34,7 @@ C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\controller\Ren
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\BookStockDaoImpl.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\service\BorrowTransactionService.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\BookTransactionDaoImpl.java
+C:\Users\girinuaha\git\MiniProject\src\main\java\com\pastelstudios\json\MappingJackson2HttpMessageConverter.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\model\BorrowTransaction.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\controller\BookController.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\model\Book.java
