@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,7 +36,7 @@ public class Book {
 	@OneToOne
 	@JoinColumn(name="book_stock_id")
 	private BookStock bookStock;
-	@OneToMany(mappedBy = "book")
+	@OneToMany(fetch=FetchType.LAZY, mappedBy = "book")
 	private List<BookTransaction> bookTransaction;
 	
 	public Book() { }

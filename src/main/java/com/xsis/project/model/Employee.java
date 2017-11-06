@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,9 +33,9 @@ public class Employee {
 	@Column(name = "birth_date")
 	@Temporal(TemporalType.DATE)
 	private Date birthDate;
-	@OneToMany(mappedBy="employee")
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="employee")
 	private List<BorrowTransaction> borrowTransaction;
-	@OneToMany(mappedBy="employee")
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="employee")
 	private List<ReturnTransaction> returnTransaction;
 
 	public Employee() {

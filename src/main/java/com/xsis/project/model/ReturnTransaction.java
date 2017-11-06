@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class ReturnTransaction {
 	private Date returnDate;
 	@ManyToOne
 	private Employee employee;
-	@OneToOne(mappedBy="returnTransaction")
+	@OneToOne(fetch=FetchType.LAZY, mappedBy="returnTransaction")
 	private RentHistory rentHistory;
 	
 	public ReturnTransaction() {}

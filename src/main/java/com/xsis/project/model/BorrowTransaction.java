@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +30,7 @@ public class BorrowTransaction {
 	@Temporal(TemporalType.DATE)
 	@Column(name="BORROW_DATE")
 	private Date borrowDate;
-	@OneToMany(mappedBy = "borrowTransaction")
+	@OneToMany(fetch=FetchType.LAZY, mappedBy = "borrowTransaction")
 	private List<BookTransaction> bookTransaction;
 	@ManyToOne
 	private Employee employee;
