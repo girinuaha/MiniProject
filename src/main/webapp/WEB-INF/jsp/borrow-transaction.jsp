@@ -176,7 +176,7 @@
 								  	</div>
 							    	<div class="col-md-1">
 								    	<label></label>
-										<button type="button" class="btn btn-success addButton"><i class="fa fa-plus"></i></button><br><br>
+										<button type="button" class="btn btn-success addButton" id="addButton"><i class="fa fa-plus"></i></button><br><br>
 									</div>
 								</div>
 								<div class="form-group hide" id="bookTemplate">
@@ -224,13 +224,16 @@
 	
 	<script>
 	$(document).ready(function() {
-	    var bookIndex = 0;
-	
+	    var bookIndex = 1;
+		var limit = 3;
 	    $('#borrowForm')
 	        // Add button click handler
 	        .on('click', '.addButton', function() {
-	        	bookIndex++;
-	            var $template = $('#bookTemplate'),
+	        	
+	        	if (bookIndex == limit) {
+					alert("ape lu minjem banyak banget!!!");
+				} else {
+					var $template = $('#bookTemplate'),
 	                $clone    = $template
 	                                .clone()
 	                                .removeClass('hide')
@@ -238,13 +241,15 @@
 	                                .attr('data-book-index', bookIndex)
 	                                .insertBefore($template);
 	
-	            // Update the name attributes
-	            $clone
-	                .find('[name="bookTransaction.book.id"]').attr('name', 'bookTransaction[' + bookIndex + '].book.id').end()
-	                .find('[name="bookTransaction[' + bookIndex + '].book.id"]').select2({
-	                	placeholder: "Select a book",
-	                    allowClear: true
-	                })
+		            // Update the name attributes
+		            $clone
+		                .find('[name="bookTransaction.book.id"]').attr('name', 'bookTransaction[' + bookIndex + '].book.id').end()
+		                .find('[name="bookTransaction[' + bookIndex + '].book.id"]').select2({
+		                	placeholder: "Select a book",
+		                    allowClear: true
+		                })
+	                bookIndex++;
+				}
 	        })
 	
 	        // Remove button click handler
@@ -253,6 +258,7 @@
 	                index = $row.attr('data-book-index');
 	            
 	            // Remove element containing the fields
+	            bookIndex--;
 	            $row.remove();
 	        });
 	    

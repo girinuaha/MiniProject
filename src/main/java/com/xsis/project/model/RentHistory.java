@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,10 +28,10 @@ public class RentHistory {
 	@Column(name="due_date")
 	private Date dueDate;
 	private int fine;
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name="BORROW_TRANSACTION_ID")
 	private BorrowTransaction borrowTransaction;
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name="RETURN_TRANSACTION_ID")
 	private ReturnTransaction returnTransaction;
 	

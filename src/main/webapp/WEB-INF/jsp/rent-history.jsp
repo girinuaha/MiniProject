@@ -233,13 +233,18 @@
 			if (day < 10) day = "0" + day;
 
 			var today = year + "-" + month + "-" + day;
-			
+						
 			function setField(data) {
 				
-				var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+				var oneDay = 24*60*60*1000;
 				var firstDate = new Date(data.dueDate);
 				var secondDate = new Date(today);
-				var diffDays = Math.round(Math.abs(((firstDate.getTime() - secondDate.getTime())/(oneDay))*5000));
+				
+				if (secondDate <= firstDate) {
+					var diffDays = 0;
+				} else {
+					var diffDays = Math.round(Math.abs(((firstDate.getTime() - secondDate.getTime())/(oneDay))*5000));
+				}
 				
 				$('#borrowId').val(data.borrowTransaction.id);
 				$('#customerId').val(data.borrowTransaction.customer.id);
