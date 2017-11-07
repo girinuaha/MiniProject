@@ -289,6 +289,7 @@
 				});
 			});
 			
+			//List Book
 			$('.detail-btn').on('click',function() {
 				
 				id = $(this).data('id');
@@ -298,7 +299,7 @@
 					type: 'POST',
 					url: '/rent_history/edit/'+id,
 					success: function(data) {
-						console.log(data.borrowTransaction.bookTransaction);
+						console.log(data.borrowTransaction.bookTransaction[1].book.title);
 						//setFieldDetail(data);
 					},
 					dataType: 'json'

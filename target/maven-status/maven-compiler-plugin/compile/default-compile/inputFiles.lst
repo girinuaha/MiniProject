@@ -14,6 +14,7 @@ C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\service\Employ
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\BorrowTransactionDaoImpl.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\controller\ReturnTransactionController.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\ReturnTransactionDao.java
+C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\service\BookTransactionService.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\dao\BookTransactionDao.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\controller\BorrowTransactionController.java
 C:\Users\girinuaha\git\MiniProject\src\main\java\com\xsis\project\controller\ShelfController.java

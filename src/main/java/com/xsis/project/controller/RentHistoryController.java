@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.xsis.project.model.BookTransaction;
+import com.xsis.project.model.BorrowTransaction;
 import com.xsis.project.model.Employee;
 import com.xsis.project.model.RentHistory;
+import com.xsis.project.service.BookTransactionService;
 import com.xsis.project.service.EmployeeService;
 import com.xsis.project.service.RentHistoryService;
 
@@ -26,6 +29,8 @@ public class RentHistoryController {
 	RentHistoryService rentHistoryService;
 	@Autowired
 	EmployeeService employeeService;
+	@Autowired
+	BookTransactionService bookTransactionService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String index(Model model) {
@@ -42,6 +47,9 @@ public class RentHistoryController {
 	@ResponseBody
 	public RentHistory getHistoryById(@PathVariable int id) {
 		RentHistory result = rentHistoryService.getHistoryById(id);
+		BorrowTransaction borrowTransaction = result.getBorrowTransaction();
+		List<BookTransaction> bookTransactions = bookTransactionService.getBookTransactionByBorrowTransaction(borrowTransaction);
+		result.getBorrowTransaction().setBookTransaction(bookTransactions);
 		return result;
 	}
 	
