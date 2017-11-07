@@ -280,6 +280,7 @@
 		$('#birthDate').bootstrapMaterialDatePicker({
 	       	weekStart : 0, 
 	       	time: false,
+	       	maxDate : new Date(),
 	       	format : 'DD/MM/YYYY',
 	    });
 		  
