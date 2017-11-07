@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Library MASA | Rent History</title>
+<title>Library MASA | Rent History</title> 
 
   <!-- start: Css -->
   <link rel="stylesheet" type="text/css" href="assets/asset/css/bootstrap.min.css">
@@ -39,34 +39,11 @@
                 <a href="index.html" class="navbar-brand"> 
                  <b>MASA</b>
                 </a>
-
-              <ul class="nav navbar-nav search-nav">
-                <li>
-                   <div class="search">
-                    <span class="fa fa-search icon-search" style="font-size:23px;"></span>
-                    <div class="form-group form-animate-text">
-                      <input type="text" class="form-text" required>
-                      <span class="bar"></span>
-                      <label class="label-search">Type anywhere to <b>Search</b> </label>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-
+              
               <ul class="nav navbar-nav navbar-right user-nav" style="margin-right: 5px;">
                 <li class="user-name"><span>Akihiko Avaron</span></li>
                   <li class="dropdown avatar-dropdown">
-                   <img src="assets/asset/img/avatar.jpg" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"/>
-                   <ul class="dropdown-menu user-dropdown">
-                     <li><a href="#"><span class="fa fa-user"></span> My Profile</a></li>
-                     <li><a href="#"><span class="fa fa-calendar"></span> My Calendar</a></li>
-                     <li role="separator" class="divider"></li>
-                     <li class="more">
-                      <ul style="float: right;">
-                        <li><a href=""><span class="fa fa-power-off "></span></a></li>
-                      </ul>
-                    </li>
-                  </ul>
+                   <img src="assets/asset/img/avatar.jpg" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"/>                   
                 </li>
               </ul>
             </div>

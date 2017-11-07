@@ -33,20 +33,6 @@
 				<a href="index.html" class="navbar-brand"> <b>MASA</b>
 				</a>
 
-				<ul class="nav navbar-nav search-nav">
-					<li>
-						<div class="search">
-							<span class="fa fa-search icon-search" style="font-size: 23px;"></span>
-							<div class="form-group form-animate-text">
-								<input type="text" class="form-text" required> <span
-									class="bar"></span> <label class="label-search">Type
-									anywhere to <b>Search</b>
-								</label>
-							</div>
-						</div>
-					</li>
-				</ul>
-
 				<ul class="nav navbar-nav navbar-right user-nav"
 					style="margin-right: 5px;">
 					<li class="user-name"><span>Akihiko Avaron</span></li>
@@ -54,18 +40,7 @@
 						src="assets/asset/img/avatar.jpg" class="img-circle avatar"
 						alt="user name" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="true" />
-						<ul class="dropdown-menu user-dropdown">
-							<li><a href="#"><span class="fa fa-user"></span> My
-									Profile</a></li>
-							<li><a href="#"><span class="fa fa-calendar"></span> My
-									Calendar</a></li>
-							<li role="separator" class="divider"></li>
-							<li class="more">
-								<ul style="float: right;">
-									<li><a href=""><span class="fa fa-power-off "></span></a></li>
-								</ul>
-							</li>
-						</ul></li>
+						</li>
 				</ul>
 			</div>
 		</div>
@@ -147,10 +122,7 @@
 						        <label class="col-md-1 control-label">Shelf</label>
 						        <div class="col-xs-4">
 						            <input type="text" class="form-control" name="category" placeholder="Category" />
-						        </div>
-						        <div class="col-xs-4">
-						            <input type="text" class="form-control" name="subCategory" placeholder="Sub-category" />
-						        </div>
+						        </div>						       
 						        <div class="col-xs-3">
 						            <input type="text" class="form-control" name="section" placeholder="Section" />
 						        </div>
@@ -167,7 +139,6 @@
 	                      <thead>
 	                        <tr>
 								<th>Category</th>
-								<th>Sub-category</th>
 								<th>Section</th>
 								<th style="width: 18%;">Action</th>
 							</tr>
@@ -176,7 +147,6 @@
 	                        <c:forEach var="shelf" items="${shelfs }">
 								<tr>
 									<td>${shelf.category }</td>
-									<td>${shelf.subCategory }</td>
 									<td>${shelf.section }</td>
 									<td style="text-align: center;">
 										<button class="btn btn-warning btn-xs update-btn icon-box" data-id="${shelf.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
@@ -241,7 +211,6 @@
 			
 			function setField(data) {
 				$('#modcategory').val(data.category);
-				$('#modsubcategory').val(data.subCategory);
 				$('#modsection').val(data.section);
 
 			}
@@ -251,7 +220,6 @@
 				var Shelf = {
 						id : id,
 						category : $('#modcategory').val(),
-						subCategory : $('#modsubcategory').val(),
 						section : $('#modsection').val(),
 					};
 				
@@ -305,12 +273,7 @@
 							<label for="modcategory">Category</label> <input type="text"
 								class="form-control" id="modcategory" name="modcategory" placeholder=" ">
 							<!-- <small id="nameHelp" class="form-text text-muted">Silahkan anda mengisi nama dengan benar</small> -->
-						</div>
-						<div class="form-group">
-							<label for="modsubcategory">Sub-category</label> <input type="text"
-								class="form-control" id="modsubcategory" name="modsubcategory" placeholder=" ">
-							<!-- <small id="nameHelp" class="form-text text-muted">Silahkan anda mengisi nama dengan benar</small> -->
-						</div>
+						</div>						
 						<div class="form-group">
 							<label for="modsection">Section</label> <input type="text"
 								class="form-control" id="modsection" name="modsection"
