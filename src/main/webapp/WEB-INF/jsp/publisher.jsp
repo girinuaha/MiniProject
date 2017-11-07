@@ -147,7 +147,7 @@
 							  	</div>
 							</div>
 						</form>
-                      </ul>
+                      </ul> 
                       
                       <table id="publisher-list" class="table table-striped table-bordered" width="100%" cellspacing="0">
 	                      <thead>

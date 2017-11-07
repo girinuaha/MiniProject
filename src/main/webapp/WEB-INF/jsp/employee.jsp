@@ -136,7 +136,7 @@
 	                            	<span class="bar"></span>
 	                            	<label>E-mail</label>
 	                            </div>
-	                       	</div>
+	                       	</div> 
 	                       	<div class="col-md-6">
 	                       		<div class="form-group form-animate-text" style="margin-top:10px !important;">
 	                       			<input type="text" class="form-text mask-phone" name="phoneNumber" required>

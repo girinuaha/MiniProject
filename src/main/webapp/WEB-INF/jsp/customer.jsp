@@ -374,7 +374,7 @@
 		$(document).ready(function() {
 
 			$('#customer-list').on('click', '.delete-btn', function() {
-
+ 
 				id = $(this).data('id');
 				$('#deleteModal').modal(id);
 			});
