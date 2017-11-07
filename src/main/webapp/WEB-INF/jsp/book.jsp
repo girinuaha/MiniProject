@@ -229,6 +229,9 @@
 			$('.mask-isbn').mask('000-0-00-000000-0');
 			$('.mask-year').mask('0000');
 			$('.mask-stock').mask('00');
+			$("#isbn").change(function () {
+				var isbn
+			})
 		});
 
 		//form validate
@@ -242,9 +245,12 @@
 				$(label.parent("div").removeClass("form-animate-error"));
 			},
 			rules : {
-				isbn : "required",
+				isbn: { required: function(){
+			       return $('#isbn_availability_result').html()=='';
+				},
 				title : "required",
 				releasedYear : "required",
+				},
 			},
 			messages : {
 				isbn : "Please enter a valid isbn",
@@ -252,6 +258,7 @@
 				releasedYear : "Please enter a valid year"
 			}
 		});
+				
 	</script>
 	<!-- end: Javascript -->
 
