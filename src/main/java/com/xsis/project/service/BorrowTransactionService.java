@@ -46,6 +46,7 @@ public class BorrowTransactionService {
 		RentHistory rentHistory = new RentHistory();
 		rentHistory.setBorrowTransaction(borrowTransaction);
 		rentHistory.setDueDate(dueDate);
+		rentHistory.setStatus("Waiting for Return");
 		
 		rentHistoryDao.save(rentHistory);
 	}

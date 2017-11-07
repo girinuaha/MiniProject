@@ -34,19 +34,21 @@ public class RentHistory {
 	@OneToOne
 	@JoinColumn(name="RETURN_TRANSACTION_ID")
 	private ReturnTransaction returnTransaction;
+	private String status;
 	
 	public RentHistory() {
 		
 	}
 
 	public RentHistory(int id, Date dueDate, int fine, BorrowTransaction borrowTransaction,
-			ReturnTransaction returnTransaction) {
+			ReturnTransaction returnTransaction, String status) {
 		super();
 		this.id = id;
 		this.dueDate = dueDate;
 		this.fine = fine;
 		this.borrowTransaction = borrowTransaction;
 		this.returnTransaction = returnTransaction;
+		this.status = status;
 	}
 
 	public int getId() {
@@ -87,5 +89,13 @@ public class RentHistory {
 
 	public void setReturnTransaction(ReturnTransaction returnTransaction) {
 		this.returnTransaction = returnTransaction;
-	}	
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }

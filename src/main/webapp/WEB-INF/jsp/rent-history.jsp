@@ -129,6 +129,7 @@
 								<th>Due Date</th>
 								<th>Return Date</th>
 								<th>Fine</th>
+								<th style="width: 12%;">Status</th>
 								<th style="width: 15%;">Action</th>
 							</tr>
 	                      </thead>
@@ -140,6 +141,15 @@
 									<td>${rentHistory.dueDate }</td>
 									<td>${rentHistory.returnTransaction.returnDate }</td>
 									<td>${rentHistory.fine }</td>
+									<td>
+										<c:set var="status" value="Waiting for Return"></c:set>
+										<c:if test="${rentHistory.status == status }">
+											<label class="label label-danger">${rentHistory.status }</label>
+										</c:if>
+										<c:if test="${rentHistory.status != status }">
+											<label class="label label-success">${rentHistory.status }</label>
+										</c:if>
+									</td>
 									<td style="text-align: center;">
 										<button class="btn btn-success btn-xs detail-btn icon-box" data-id="${rentHistory.id}" title="View Books"><span class="icons icon-eye"></span></button>&nbsp;
 										<button class="btn btn-warning btn-xs update-btn icon-box" data-id="${rentHistory.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;

@@ -33,6 +33,7 @@ public class RentHistoryService {
 		returnTransactionDao.save(returnTransaction);
 		
 		rentHistory.setReturnTransaction(returnTransaction);
+		rentHistory.setStatus("Book has been Returned");
 		rentHistoryDao.update(rentHistory);
 		
 	}
