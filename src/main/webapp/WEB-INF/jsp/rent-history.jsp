@@ -194,7 +194,7 @@
 		
 		//update
 		$(document).ready(function (){
-			$('.update-btn').on('click',function() {
+			$('#rent-list').on('click','.update-btn', function() {
 				
 				id = $(this).data('id');
 				
@@ -208,7 +208,7 @@
 					dataType: 'json'
 				});
 				
-				$('#update-modal').modal();
+				$('#update-modal').modal('show');
 			});
 			
 			var date = new Date();
@@ -277,7 +277,7 @@
 			});
 			
 			//List Book
-			$('.detail-btn').on('click',function() {
+			$('#rent-list').on('click','.detail-btn', function() {
 				
 				id = $(this).data('id');
 				
@@ -292,7 +292,7 @@
 					dataType: 'json'
 				});
 				
-				$('#detail-modal').modal();
+				$('#detail-modal').modal('show');
 			});
 			
 			function setFieldDetail(data){
