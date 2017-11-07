@@ -36,8 +36,8 @@
                 <span class="middle"></span>
                 <span class="bottom"></span>
               </div>
-                <a href="index.html" class="navbar-brand"> 
-                 <b>MASA</b>
+                <a class="navbar-brand"> 
+                 <b>Library MASA<sup style="font-size: 12px; font-weight: 200">lah</sup></b>
                 </a>
               
               <ul class="nav navbar-nav navbar-right user-nav" style="margin-right: 5px;">
@@ -276,8 +276,8 @@
 					type: 'POST',
 					url: '/rent_history/edit/'+id,
 					success: function(data) {
-						console.log(data.borrowTransaction.bookTransaction[1].book.title);
-						//setFieldDetail(data);
+						//console.log(data.borrowTransaction.bookTransaction[0].book.title);
+						setFieldDetail(data);
 					},
 					dataType: 'json'
 				});
@@ -287,7 +287,9 @@
 			
 			function setFieldDetail(data){
 				for (var i = 0; i < data.borrowTransaction.bookTransaction.length; i++) {
-					$('#book['+i+']').val(data.borrowTransaction.bookTransaction[i].book.title);
+					$('#list-book').append("<label class='col-xs-12 control-label'><b>Book </b>"+(i+1)+"</label>");
+					$('#list-book').append(
+							"<label class='col-xs-1 control-label'>Title</label><div class='col-xs-11'><input type='text' class='form-control' value='"+data.borrowTransaction.bookTransaction[i].book.title+"'><br></div>")
 				}
 			}
 		});
@@ -305,14 +307,13 @@
 		        <div class="modal-body">
 		        	<form style="margin-top: 3%;">
 						<div class="form-row">
-							<input type="hidden" class="form-control" name="borrowId" id="borrowId">
-						    <div class="form-group col-md-12">
+							<div class="form-group col-md-12" id="list-book">
 						   
-						    	<label>Book</label>
-							    <input type="text" class="form-control" id="book[0]">
-							    <input type="text" class="form-control" id="book[1]">
-							    <input type="text" class="form-control" id="book[2]">
-						    
+						    	<!-- <label class="col-xs-12 control-label"><b>Book</b></label>
+						    		<label class="col-xs-1 control-label">Title</label>
+							        <div class="col-xs-11">
+							            <input type="text" class="form-control" name="question" />
+							        </div> -->	    
 							</div>
 						  	<label> </label>
 						</div>

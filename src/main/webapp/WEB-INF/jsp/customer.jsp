@@ -30,8 +30,9 @@
 					<span class="top"></span> <span class="middle"></span> <span
 						class="bottom"></span>
 				</div>
-				<a href="index.html" class="navbar-brand"> <b>MASA</b>
-				</a>
+				<a class="navbar-brand"> 
+                 <b>Library MASA<sup style="font-size: 12px; font-weight: 200">lah</sup></b>
+                </a>
 
 				<ul class="nav navbar-nav navbar-right user-nav"
 					style="margin-right: 5px;">
