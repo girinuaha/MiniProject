@@ -205,7 +205,7 @@
 		
 		//detail
 		$(document).ready(function (){
-			$('.detail-btn').on('click',function() {
+			$('#publisher-list').on('click', '.detail-btn', function() {
 				
 				id = $(this).data('id');
 				
@@ -219,7 +219,7 @@
 					dataType: 'json'
 				});
 				
-				$('#detail-modal').modal();
+				$('#detail-modal').modal('show');
 			});
 			
 			function setField(data) {
@@ -235,7 +235,7 @@
 		
 		//update
 		$(document).ready(function (){
-			$('.update-btn').on('click',function() {
+			$('#publisher-list').on('click', '.update-btn',function() {
 				
 				id = $(this).data('id');
 				
@@ -249,7 +249,7 @@
 					dataType: 'json'
 				});
 				
-				$('#update-modal').modal();
+				$('#update-modal').modal('show');
 			});
 			
 			function setField(data) {
@@ -285,7 +285,7 @@
 		//delete
 		$(document).ready(function (){
 			
-			$('.delete-btn').on('click',function() {
+			$('#publisher-list').on('click', '.delete-btn',function() {
 				
 				id = $(this).data('id');
 				$('#delete-modal').modal(id);

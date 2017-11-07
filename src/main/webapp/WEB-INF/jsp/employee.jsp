@@ -257,7 +257,7 @@
 			
 		//update
 		$(document).ready(function (){
-			$('.update-btn').on('click',function() {
+			$('#employee-list').on('click','.update-btn', function() {
 				
 				id = $(this).data('id');
 				
@@ -271,7 +271,7 @@
 					dataType: 'json'
 				});
 				
-				$('#update-modal').modal();
+				$('#update-modal').modal('show');
 			});
 			
 			function setField(data) {
@@ -309,7 +309,7 @@
 		//delete
 		$(document).ready(function (){
 			
-			$('.delete-btn').on('click',function() {
+			$('#employee-list').on('click', '.delete-btn', function() {
 				
 				id = $(this).data('id');
 				$('#delete-modal').modal(id);
@@ -342,7 +342,7 @@
 						<div class="form-row">
 						    <div class="form-group col-md-6">
 							    <label>Name</label>
-							    <input type="text" class="form-control" id="modname" name="modname">
+							    <input disabled type="text" class="form-control" id="modname" name="modname">
 							</div>
 							<div class="form-group col-md-6">
 						    	<label>Email</label>
@@ -358,7 +358,7 @@
 						  	</div>
 						  	<div class="form-group col-md-6">
 						    	<label>Birth Date</label>
-						    	<input type="date" class="form-control" name="modbirthDate" id="modbirthDate">
+						    	<input disabled type="date" class="form-control" name="modbirthDate" id="modbirthDate">
 						  	</div>	
 						  	<label> </label>
 						</div>

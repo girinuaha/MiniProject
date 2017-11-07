@@ -319,7 +319,7 @@
 		var id = 0;
 		$(document).ready(function() {
 
-			$('.update-btn').on('click', function() {
+			$('#customer-list').on('click','.update-btn', function() {
 
 				//ambil data dari server => ajax
 				id = $(this).attr('data-id');
@@ -333,7 +333,7 @@
 					dataType : 'json'
 				});
 
-				$('#updateModal').modal();
+				$('#updateModal').modal('show');
 			});
 
 			function _setFieldUpdateModal(data) {
@@ -373,7 +373,7 @@
 		//delete
 		$(document).ready(function() {
 
-			$('.delete-btn').on('click', function() {
+			$('#customer-list').on('click','.delete-btn', function() {
 
 				id = $(this).data('id');
 				$('#deleteModal').modal(id);

@@ -152,7 +152,12 @@
 									</td>
 									<td style="text-align: center;">
 										<button class="btn btn-success btn-xs detail-btn icon-box" data-id="${rentHistory.id}" title="View Books"><span class="icons icon-eye"></span></button>&nbsp;
-										<button class="btn btn-warning btn-xs update-btn icon-box" data-id="${rentHistory.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
+										<c:if test="${rentHistory.status == status }">
+											<button class="btn btn-warning btn-xs update-btn icon-box" data-id="${rentHistory.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
+										</c:if>
+										<c:if test="${rentHistory.status != status }">
+											<button disabled class="btn btn-warning btn-xs update-btn icon-box" data-id="${rentHistory.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
+										</c:if>
 									</td>
 								</tr>
 							</c:forEach>
@@ -293,6 +298,9 @@
 				});
 				
 				$('#detail-modal').modal('show');
+				$('.close-modal').on('click', function() {
+					$('#list-book').empty();
+				});
 			});
 			
 			function setFieldDetail(data){
@@ -311,26 +319,21 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			        <h4 class="modal-title">List Book</h4>
 		        </div>
 		        <div class="modal-body">
 		        	<form style="margin-top: 3%;">
 						<div class="form-row">
 							<div class="form-group col-md-12" id="list-book">
-						   
-						    	<!-- <label class="col-xs-12 control-label"><b>Book</b></label>
-						    		<label class="col-xs-1 control-label">Title</label>
-							        <div class="col-xs-11">
-							            <input type="text" class="form-control" name="question" />
-							        </div> -->	    
+						   	    
 							</div>
 						  	<label> </label>
 						</div>
 					</form>
 		        </div>
 		        <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">Close</button>
 	        	</div>
 	        </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -353,31 +356,31 @@
 						    <div class="form-group col-md-6">
 							    <label>Customer</label>
 							    <input type="hidden" class="form-control" name="customerId" id="customerId">
-							    <input type="text" class="form-control" name="customer" id="customer">
+							    <input disabled type="text" class="form-control" name="customer" id="customer">
 							</div>
 							<div class="form-group col-md-6">
 						    	<label>Borrow Date</label>
-						    	<input type="text" class="form-control" name="borrowDate" id="borrowDate">
+						    	<input disabled type="text" class="form-control" name="borrowDate" id="borrowDate">
 						  	</div>
 							<div class="form-group col-md-6">
 						    	<label>Employee On Duty</label>
 						    	<input class="form-control" type="hidden" name="employeeBorrowId" id="employeeBorrowId">
-						    	<input class="form-control" type="text" name="employeeBorrow" id="employeeBorrow">
+						    	<input disabled class="form-control" type="text" name="employeeBorrow" id="employeeBorrow">
 							</div>
 						  	<div class="form-group col-md-6">
 						    	<label>Due Date</label>
-						    	<input type="text" class="form-control" name="dueDate" id="dueDate">
+						    	<input disabled type="text" class="form-control" name="dueDate" id="dueDate">
 						  	</div>
 						  	<div class="form-group col-md-6">
 						    	<label>Return Date</label>
-						    	<input type="text" class="form-control" name="returnDate" id="returnDate">
+						    	<input disabled type="text" class="form-control" name="returnDate" id="returnDate">
 						  	</div>
 						  	<div class="form-group col-md-6">
 						    	<label>Fine</label>
-						    	<input type="text" class="form-control" name="fine" id="fine">
+						    	<input disabled type="text" class="form-control" name="fine" id="fine">
 						  	</div>
 						  	<div class="form-group col-md-6">
-							    <label>Employee</label>
+							    <label>Employee on Return</label>
 							    <select class="form-control" name="employeeReturn" id="employeeReturn">
 							    	<c:forEach var="employee" items="${employees }">
 							    		<option value="${employee.id }">${employee.name }</option>
