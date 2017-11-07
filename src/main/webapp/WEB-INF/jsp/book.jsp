@@ -230,6 +230,7 @@
 			$('.mask-isbn').mask('000-0-00-000000-0');
 			$('.mask-year').mask('0000');
 			$('.mask-stock').mask('00');	
+		});
 						
 		//form validate
 		$("#add-form").validate({
@@ -251,8 +252,7 @@
 				title : "Please enter book's title",
 				releasedYear : "Please enter a valid year"
 			}
-		});		
-	});
+		});	
 				
 	</script>
 	<!-- end: Javascript -->

@@ -319,7 +319,7 @@
 		var id = 0;
 		$(document).ready(function() {
 
-			$('#customer-list').on('click','.update-btn', function() {
+			$('#customer-list').on('click', '.update-btn', function() {
 
 				//ambil data dari server => ajax
 				id = $(this).attr('data-id');
@@ -373,10 +373,11 @@
 		//delete
 		$(document).ready(function() {
 
-			$('#customer-list').on('click','.delete-btn', function() {
-
+			$('#customer-list').on('click', '.delete-btn', function() {
+				
 				id = $(this).data('id');
 				$('#deleteModal').modal(id);
+				
 			});
 
 			$('#submit-delete').click(function() {

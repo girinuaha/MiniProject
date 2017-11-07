@@ -136,7 +136,7 @@
 	                            	<span class="bar"></span>
 	                            	<label>E-mail</label>
 	                            </div>
-	                       	</div>
+	                       	</div> 
 	                       	<div class="col-md-6">
 	                       		<div class="form-group form-animate-text" style="margin-top:10px !important;">
 	                       			<input type="text" class="form-text mask-phone" name="phoneNumber" required>
@@ -257,7 +257,11 @@
 			
 		//update
 		$(document).ready(function (){
+<<<<<<< HEAD
 			$('#employee-list').on('click','.update-btn', function() {
+=======
+			$('#employee-list').on('click', '.update-btn', function() {
+>>>>>>> branch 'master' of https://github.com/girinuaha/MiniProject.git
 				
 				id = $(this).data('id');
 				
@@ -309,8 +313,7 @@
 		//delete
 		$(document).ready(function (){
 			
-			$('#employee-list').on('click', '.delete-btn', function() {
-				
+			$('#employee-list').on('click','.delete-btn', function() {
 				id = $(this).data('id');
 				$('#delete-modal').modal(id);
 			});

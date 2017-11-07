@@ -17,7 +17,7 @@
   <link rel="stylesheet" type="text/css" href="assets/asset/css/plugins/animate.min.css"/>
   <link href="assets/asset/css/style.css" rel="stylesheet">
   <!-- end: Css -->
-
+ 
   <link rel="shortcut icon" href="assets/asset/img/logomi.png">
 </head>
 
@@ -193,8 +193,9 @@
 		
 		//update
 		$(document).ready(function (){
-			$('#shelf-list').on('click', '.update-btn',function() {
-				
+
+			$('#shelf-list').on('click','.update-btn', function() {
+
 				id = $(this).data('id');
 				
 				//ajax retrive data
@@ -239,8 +240,8 @@
 		//delete
 		$(document).ready(function (){
 			
-			$('#shelf-list').on('click', '.delete-btn',function() {
-				
+			$('#shelf-list').on('click','.delete-btn', function() {
+
 				id = $(this).data('id');
 				$('#delete-modal').modal(id);
 			});
