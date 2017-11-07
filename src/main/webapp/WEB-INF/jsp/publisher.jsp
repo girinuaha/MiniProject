@@ -118,23 +118,29 @@
                       
                       <button class="btn btn-success tree-toggle icon-box"><span class="fa fa-plus"/> Add Publisher</button><br><br>
                       <ul class="nav nav-list tree">
-                        <form action="publisher/save" method="POST">
-							<div class="form-row">
-							    <div class="form-group col-md-6">
-								    <label>Name</label>
-								    <input type="text" class="form-control" name="name">
+                     	 <form id="add-form" form action="publisher/save" method="POST">
+							<div class="col-md-6">
+							    <div class="form-group form-animate-text" style="margin-top:10px !important;">
+									<input type="text" class="form-text" name="name" required>
+									<span class="bar"></span>
+	                              	<label>Name</label>
 								</div>
-								<div class="form-group col-md-6">
-							    	<label>Address</label>
-							    	<input class="form-control" type="text" name="address"></td>
+								<div class="form-group form-animate-text" style="margin-top:10px !important;">
+	                            	<input class="form-text" type="text" name="address" required>
+	                            	<span class="bar"></span>
+	                            	<label>Address</label>
 								</div>
-								<div class="form-group col-md-6">
-							    	<label>Email</label>
-							    	<input type="email" class="form-control" name="email">
+							</div>
+	                       	<div class="col-md-6">
+								<div class="form-group form-animate-text" style="margin-top:10px !important;">
+	                            	<input type="text" class="form-text" name="email" required>
+	                            	<span class="bar"></span>
+	                            	<label>E-mail</label>
 							  	</div>
-							  	<div class="form-group col-md-6">
-							    	<label>Phone Number</label>
-							    	<input type="text" class="form-control" name="phoneNumber">
+							  	<div class="form-group form-animate-text" style="margin-top:10px !important;">
+	                       			<input type="text" class="form-text mask-phone" name="phoneNumber" required>
+	                       			<span class="bar"></span>
+	                       			<label>Phone Number</label>
 							  	</div>
 							  	<div class="form-group col-md-6">
 							    	<button type="submit" class="btn btn-primary">Save</button><br><br>
@@ -189,12 +195,40 @@
 	<script src="assets/asset/js/plugins/jquery.datatables.min.js"></script>
 	<script src="assets/asset/js/plugins/datatables.bootstrap.min.js"></script>
 	<script src="assets/asset/js/plugins/jquery.nicescroll.js"></script>
+	<script src="assets/asset/js/plugins/jquery.validate.min.js"></script>
+	<script src="assets/asset/js/plugins/jquery.mask.min.js"></script>
 	
 	<!-- custom -->
 	<script src="assets/asset/js/main.js"></script>
 	<script type="text/javascript">
 	  $(document).ready(function(){
 	    $('#publisher-list').DataTable();
+	    $('.mask-phone').mask('0000-0000-0000');
+	  });
+	  
+	//form validate
+	  $("#add-form").validate({
+	        errorElement: "em",
+	        errorPlacement: function(error, element) {
+	          $(element.parent("div").addClass("form-animate-error"));
+	          error.appendTo(element.parent("div"));
+	        },
+	        success: function(label) {
+	          $(label.parent("div").removeClass("form-animate-error"));
+	        },
+	        rules: {
+	          name: "required",
+	          address: "required",
+	          email: {
+	            required: true,
+	            email: true
+	          }
+	        },
+	        messages: {
+	          name: "Please enter a valid name",
+	          address: "Please enter a valid address",
+	          email: "Please enter a valid email address"
+	        }
 	  });
 	</script>
 	<!-- end: Javascript -->
