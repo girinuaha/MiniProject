@@ -6,4 +6,6 @@ public interface BorrowTransactionDao {
 
 	void save(BorrowTransaction borrowTransaction);
 
+	BorrowTransaction getBorrowTransactionById(int id);
+
 }

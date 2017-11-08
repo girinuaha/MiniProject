@@ -140,7 +140,7 @@
 									<td>${rentHistory.borrowTransaction.borrowDate }</td>
 									<td>${rentHistory.dueDate }</td>
 									<td>${rentHistory.returnTransaction.returnDate }</td>
-									<td>${rentHistory.fine }</td>
+									<td>Rp. ${rentHistory.fine }</td>
 									<td>
 										<c:set var="status" value="Waiting for Return"></c:set>
 										<c:if test="${rentHistory.status == status }">
@@ -303,11 +303,17 @@
 				});
 			});
 			
-			function setFieldDetail(data){
+			function setFieldDetail(data){				
 				for (var i = 0; i < data.borrowTransaction.bookTransaction.length; i++) {
-					$('#list-book').append("<label class='col-xs-12 control-label'><b>Book </b>"+(i+1)+"</label>");
-					$('#list-book').append(
-							"<label class='col-xs-1 control-label'>Title</label><div class='col-xs-11'><input type='text' class='form-control' value='"+data.borrowTransaction.bookTransaction[i].book.title+"'><br></div>")
+					
+					var createHTML = '';
+					createHTML += '<label class="col-xs-12 control-label"><b>Book </b>'+(i+1)+'</label>';
+					createHTML += '<label class="col-xs-1 control-label">Title</label>';
+					createHTML += '<div class="col-xs-11">';
+					createHTML += '<input type="text" class="form-control" value="'+data.borrowTransaction.bookTransaction[i].book.title+'">';
+					createHTML += '</div>';
+					
+					$('#list-book').append(createHTML);
 				}
 			}
 		});

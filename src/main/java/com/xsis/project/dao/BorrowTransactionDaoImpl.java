@@ -21,4 +21,12 @@ public class BorrowTransactionDaoImpl implements BorrowTransactionDao {
 		session.save(borrowTransaction);
 		session.flush();
 	}
+
+	public BorrowTransaction getBorrowTransactionById(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		BorrowTransaction borrowTransaction = session.get(BorrowTransaction.class, id);
+		return borrowTransaction;
+	}
+	
+	
 }

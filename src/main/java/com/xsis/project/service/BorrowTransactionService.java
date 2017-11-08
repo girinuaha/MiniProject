@@ -8,9 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.xsis.project.dao.BookDao;
+import com.xsis.project.dao.BookStockDao;
 import com.xsis.project.dao.BookTransactionDao;
 import com.xsis.project.dao.BorrowTransactionDao;
 import com.xsis.project.dao.RentHistoryDao;
+import com.xsis.project.model.Book;
+import com.xsis.project.model.BookStock;
 import com.xsis.project.model.BookTransaction;
 import com.xsis.project.model.BorrowTransaction;
 import com.xsis.project.model.RentHistory;
@@ -25,6 +29,10 @@ public class BorrowTransactionService {
 	RentHistoryDao rentHistoryDao;
 	@Autowired
 	BookTransactionDao bookTransactionDao;
+	@Autowired
+	BookDao bookDao;
+	@Autowired
+	BookStockDao bookStockDao;
 	
 	public void save(BorrowTransaction borrowTransaction) {
 		
@@ -34,6 +42,10 @@ public class BorrowTransactionService {
 		
 		for (BookTransaction bookTransaction : bookTransactions) {
 			bookTransaction.setBorrowTransaction(borrowTransaction);
+			Book book = bookDao.getBookById(bookTransaction.getBook().getId());
+			BookStock bookStock = book.getBookStock();
+			bookStock.setStock(bookStock.getStock() - 1);
+			bookStockDao.update(bookStock);
 			bookTransactionDao.save(bookTransaction);
 		}
 		
