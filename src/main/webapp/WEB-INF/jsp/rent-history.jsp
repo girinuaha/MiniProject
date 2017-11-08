@@ -140,7 +140,7 @@
 									<td>${rentHistory.borrowTransaction.borrowDate }</td>
 									<td>${rentHistory.dueDate }</td>
 									<td>${rentHistory.returnTransaction.returnDate }</td>
-									<td>Rp. ${rentHistory.fine }</td>
+									<td class="mask-money">${rentHistory.fine }</td>
 									<td>
 										<c:set var="status" value="Waiting for Return"></c:set>
 										<c:if test="${rentHistory.status == status }">
@@ -183,6 +183,7 @@
 	<script src="assets/asset/js/plugins/jquery.datatables.min.js"></script>
 	<script src="assets/asset/js/plugins/datatables.bootstrap.min.js"></script>
 	<script src="assets/asset/js/plugins/jquery.nicescroll.js"></script>
+	<script src="assets/asset/js/plugins/jquery.mask.min.js"></script>
 	
 	<!-- custom -->
 	<script src="assets/asset/js/main.js"></script>
@@ -190,6 +191,8 @@
 	  $(document).ready(function(){
 	    $('#rent-list').DataTable();
 	  });
+	  
+	  $('.mask-money').mask('000.000.000.000.000', {reverse: true});
 	</script>
 	<!-- end: Javascript -->
 	

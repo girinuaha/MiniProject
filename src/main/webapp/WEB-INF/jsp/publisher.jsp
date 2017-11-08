@@ -167,7 +167,6 @@
 									<td>${publisher.email }</td>
 									<td>${publisher.phoneNumber }</td>
 									<td style="text-align: center;">
-										<button class="btn btn-success btn-xs detail-btn icon-box" data-id="${publisher.id}" title="Detail"><span class="icons icon-eye"></span></button>&nbsp;
 										<button class="btn btn-warning btn-xs update-btn icon-box" data-id="${publisher.id}" title="Update"><span class="icons icon-note"></span></button>&nbsp;
 										<button class="btn btn-danger btn-xs delete-btn icon-box" data-id="${publisher.id}" title="Delete"><span class="icons icon-trash"></span></button>
 									</td>
@@ -239,12 +238,8 @@
 		
 		//detail
 		$(document).ready(function (){
-<<<<<<< HEAD
-			$('#publisher-list').on('click', '.detail-btn', function() {
-=======
 			$('#publisher-list').on('click','.detail-btn', function() {
->>>>>>> branch 'master' of https://github.com/girinuaha/MiniProject.git
-				
+			
 				id = $(this).data('id');
 				
 				//ajax retrive data
@@ -323,13 +318,9 @@
 		
 		//delete
 		$(document).ready(function (){
-			
-<<<<<<< HEAD
-			$('#publisher-list').on('click', '.delete-btn',function() {
-=======
+
 			$('#publisher-list').on('click','.delete-btn', function() {
->>>>>>> branch 'master' of https://github.com/girinuaha/MiniProject.git
-				
+	
 				id = $(this).data('id');
 				$('#delete-modal').modal(id);
 			});

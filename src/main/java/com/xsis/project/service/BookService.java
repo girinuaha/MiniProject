@@ -38,6 +38,7 @@ public class BookService {
 
 	public void update(Book book) {
 		bookDao.update(book);
+		bookStockDao.update(book.getBookStock());
 	}
 
 	public void delete(int id) {
